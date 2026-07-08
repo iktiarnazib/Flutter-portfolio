@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konga Online Marketplace | Project Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#0B1220',
+                        surface: '#121A2B',
+                        accent: '#4C8DFF',
+                        amber: '#FFB86B',
+                        neonGreen: '#00FF9D',
+                        muted: '#8CA2C4',
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 8s ease-in-out infinite 3s',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 0.4, transform: 'scale(1)' },
+                            '50%': { opacity: 0.8, transform: 'scale(1.05)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B1220;
+            color: #EAF0FF;
+            overflow-x: hidden;
+        }
+
+        .bg-grid {
+            background-image: 
+                radial-gradient(rgba(76, 141, 255, 0.15) 1px, transparent 1px),
+                radial-gradient(rgba(76, 141, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .glass-card {
+            background: rgba(18, 26, 43, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(76, 141, 255, 0.15);
+        }
+
+        .glow-blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(80px);
+            opacity: 0.6;
+        }
+        
+        .img-container img {
+            transition: all 0.4s ease;
+        }
+        .img-container img:hover {
+            transform: scale(1.015);
+            box-shadow: 0 25px 50px -12px rgba(255, 184, 107, 0.2);
+            border-color: rgba(255, 184, 107, 0.4);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-accent selection:text-white relative">
+
+    <div class="bg-grid"></div>
+    <div class="glow-blob top-[10%] left-[-10%] bg-amber/20 animate-pulse-glow"></div>
+    <div class="glow-blob bottom-[30%] right-[-10%] bg-accent/15 animate-float-delayed"></div>
+
+    <!-- Navigation -->
+    <div class="fixed top-0 w-full z-50">
+        <nav class="w-full glass-card rounded-none border-t-0 border-l-0 border-r-0 border-b border-white/10 py-4 px-6 md:px-12 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 text-accent hover:text-white transition-colors font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Back to Portfolio
+            </a>
+            <div class="font-display font-bold text-xl tracking-tight text-white flex items-center gap-2">
+                <span class="text-accent">&lt;</span>Iktiar<span class="text-accent">/&gt;</span>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="pt-32 pb-24 px-6 max-w-5xl mx-auto z-10 relative">
+        
+        <!-- Header Info -->
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center justify-center mb-6">
+                <img src="./Konga Online Marketplace/konga logo.png" alt="Konga Logo" class="w-20 h-20 rounded-3xl shadow-[0_0_30px_rgba(255,184,107,0.25)] object-cover border border-white/10">
+            </div>
+            <h1 class="font-display text-4xl md:text-5xl font-bold mb-4 text-white">Konga Online Marketplace</h1>
+            <p class="text-amber font-mono text-sm tracking-wide mb-6">PROUD CO-DEVELOPER • 1M+ DOWNLOADS ON GOOGLE PLAY</p>
+            
+            <p class="text-base text-muted max-w-3xl mx-auto leading-relaxed mb-8">
+                I helped build the Konga online shopping mobile application. This powerful platform provides users a robust, safe, and secure retail experience on the move, scaling seamlessly to support its active consumer base. The application currently stands with over 1 million downloads on the Google Play Store.
+            </p>
+
+            <a href="https://play.google.com/store/apps/details?id=com.konga.android" target="_blank" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-amber text-navy font-bold hover:bg-white hover:scale-105 transition-all shadow-[0_0_25px_rgba(255,184,107,0.35)]">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M5,3l12.1,8.3c0.5,0.4,0.5,1,0,1.4L5,21c-0.6,0.4-1.4,0-1.4-0.7V3.7C3.6,3,4.4,2.6,5,3z M15.7,12l4.4-3c0.4-0.3,0.4-0.9,0-1.2l-4.4-3L12,9.3L15.7,12z"/></svg>
+                View on Google Play Store
+            </a>
+        </div>
+
+        <!-- Project Overview Details Box -->
+        <div class="glass-card rounded-2xl p-8 mb-16 border border-white/10">
+            <h2 class="font-display text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                <span class="text-amber">■</span> Application Architecture & Core Offerings
+            </h2>
+            <p class="text-muted mb-6 leading-relaxed">
+                The application allows consumers to browse premium items and enjoy dynamic, app-only sales and daily deal discounts across a broad range of product categories:
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm mb-8">
+                <div class="space-y-2">
+                    <p class="text-white font-medium">❖ Mobile Ecosystem & Electronics</p>
+                    <p class="text-muted pl-4 leading-relaxed">Comprehensive catalogs ranging from tablets built for professionals to computers, accessories, and mobile hardware from tier-one manufacturers.</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-white font-medium">❖ Premium Gaming Hub</p>
+                    <p class="text-muted pl-4 leading-relaxed">Dedicated storefront segments displaying the latest console frameworks and game releases with fluid indexing.</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-white font-medium">❖ Fashion & Beauty Lifestyle</p>
+                    <p class="text-muted pl-4 leading-relaxed">Tailored interfaces handling dense inventories for fashion, watches, health goods, and top-tier cosmetic brands.</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-white font-medium">❖ Advanced Shopping Tools</p>
+                    <p class="text-muted pl-4 leading-relaxed">Equipped with customizable filter systems tracking context metrics like vendor rating, sizing charts, color fields, and localized competitive price brackets.</p>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-6 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center text-xs font-mono">
+                <div class="bg-navy/40 p-4 rounded-xl border border-white/5">
+                    <p class="text-neonGreen font-bold text-lg mb-1">PROCESSED</p>
+                    <p class="text-muted">Safe & Secure Infrastructure</p>
+                </div>
+                <div class="bg-navy/40 p-4 rounded-xl border border-white/5">
+                    <p class="text-accent font-bold text-lg mb-1">INTERACTIVE</p>
+                    <p class="text-muted">User Reviews & Ratings</p>
+                </div>
+                <div class="bg-navy/40 p-4 rounded-xl border border-white/5">
+                    <p class="text-purple-400 font-bold text-lg mb-1">PERSISTENT</p>
+                    <p class="text-muted">Custom Personal Favorites List</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Serial Image Showcase Section -->
+        <h2 class="font-display text-2xl font-bold text-white mb-8 text-center">Production & Play Store Gallery</h2>
+        <div class="img-container flex flex-col gap-8">
+            <img src="./Konga Online Marketplace/Konga 1M Downlod SS.png" alt="Konga 1M Milestone Screen" class="w-full rounded-2xl border border-white/10 object-cover" onerror="this.style.display='none'">
+            <img src="./Konga Online Marketplace/picture-1.webp" alt="Konga Workspace Frame 1" class="w-full rounded-2xl border border-white/10 object-cover" onerror="this.style.display='none'">
+            <img src="./Konga Online Marketplace/picture-2.webp" alt="Konga Workspace Frame 2" class="w-full rounded-2xl border border-white/10 object-cover" onerror="this.style.display='none'">
+            <img src="./Konga Online Marketplace/picture-3.webp" alt="Konga Workspace Frame 3" class="w-full rounded-2xl border border-white/10 object-cover" onerror="this.style.display='none'">
+            <img src="./Konga Online Marketplace/picture-4.webp" alt="Konga Workspace Frame 4" class="w-full rounded-2xl border border-white/10 object-cover" onerror="this.style.display='none'">
+            <img src="./Konga Online Marketplace/picture-5.webp" alt="Konga Workspace Frame 5" class="w-full rounded-2xl border border-white/10 object-cover" onerror="this.style.display='none'">
+            <img src="./Konga Online Marketplace/picture-6.webp" alt="Konga Workspace Frame 6" class="w-full rounded-2xl border border-white/10 object-cover" onerror="this.style.display='none'">
+            <img src="./Konga Online Marketplace/picture-7.webp" alt="Konga Workspace Frame 7" class="w-full rounded-2xl border border-white/10 object-cover" onerror="this.style.display='none'">
+            <img src="./Konga Online Marketplace/picture-8.webp" alt="Konga Workspace Frame 8" class="w-full rounded-2xl border border-white/10 object-cover" onerror="this.style.display='none'">
+            <img src="./Konga Online Marketplace/picture-9.webp" alt="Konga Workspace Frame 9" class="w-full rounded-2xl border border-white/10 object-cover" onerror="this.style.display='none'">
+        </div>
+
+        <!-- Footer Note -->
+        <div class="mt-16 text-center text-sm font-mono text-muted/40">
+            &copy; 2026 Iktiar • Konga Mobile Project Environment
+        </div>
+    </main>
+</body>
+</html>
