@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iktiar - App Architect</title>
+    <title>Iktiar - App & Dashboard Architect</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <script>
@@ -22,6 +22,8 @@
                         amber: '#FFB86B',
                         neonGreen: '#00FF9D',
                         muted: '#8CA2C4',
+                        upwork: '#14A800',
+                        fiverr: '#1DBF73'
                     },
                     animation: {
                         'spin-slow': 'spin 8s linear infinite',
@@ -50,7 +52,6 @@
             overflow-x: hidden;
         }
 
-        /* Tech-Grid Background */
         .bg-grid {
             background-image: 
                 radial-gradient(rgba(76, 141, 255, 0.15) 1px, transparent 1px),
@@ -98,7 +99,6 @@
             opacity: 0.6;
         }
 
-        /* Blinking code cursor */
         .cursor-blink {
             display: inline-block;
             width: 8px;
@@ -114,7 +114,6 @@
             50% { opacity: 0; }
         }
 
-        /* YAML Syntax Colors */
         .yaml-key { color: #FFB86B; font-weight: 500; }
         .yaml-val { color: #A6ACCD; }
         .yaml-str { color: #00FF9D; }
@@ -127,54 +126,208 @@
     <div class="glow-blob top-[-10%] left-[-10%] bg-accent animate-pulse-glow"></div>
     <div class="glow-blob bottom-[20%] right-[-10%] bg-purple-600/40 animate-float-delayed"></div>
 
-    <nav class="fixed w-full z-50 glass-card rounded-none border-t-0 border-l-0 border-r-0 border-b border-white/10 py-4 px-6 md:px-12 flex justify-between items-center">
-        <div class="font-display font-bold text-xl tracking-tight text-white flex items-center gap-2">
-            <span class="text-accent">&lt;</span>Iktiar<span class="text-accent">/&gt;</span>
+    <div class="fixed top-0 w-full z-50">
+        <!-- Hire-me strip: Upwork & Fiverr, first thing on the page -->
+        <div class="w-full bg-[#080D18] border-b border-white/5 px-4 md:px-12 py-2 flex items-center justify-center gap-3 flex-wrap">
+            <span class="hidden sm:flex items-center gap-1.5 text-[11px] font-mono text-muted/70 tracking-wide">
+                <span class="relative flex h-1.5 w-1.5">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neonGreen opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-neonGreen"></span>
+                </span>
+                OPEN FOR PROJECTS
+            </span>
+            <a href="https://www.upwork.com/freelancers/~01d1e6e01650df66dd" target="_blank" class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-upwork/15 hover:bg-upwork/25 border border-upwork/50 text-xs font-bold text-white transition-all duration-300 hover:scale-105">
+                <svg class="w-3.5 h-3.5 text-upwork" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-7.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V4.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.165.749 2.508 1.203 4.086 1.203 3 0 5.439-2.452 5.439-5.45.001-3.001-2.438-5.484-5.439-5.484z"/></svg>
+                Upwork
+            </a>
+            <a href="https://www.fiverr.com/s/pdD54PG" target="_blank" class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-fiverr/15 hover:bg-fiverr/25 border border-fiverr/50 text-xs font-bold text-white transition-all duration-300 hover:scale-105">
+                <svg class="w-3.5 h-3.5 text-fiverr" fill="currentColor" viewBox="0 0 24 24"><path d="M23.004 12.442c-.163.063-.63.198-1.212.198-1.362 0-2.15-.798-2.15-2.176v-.038h2.71v-1.16h-2.71v-.874c0-1.014.462-1.51 1.363-1.51.55 0 1.062.135 1.062.135l.276-1.235s-.517-.194-1.494-.194c-1.71 0-2.71.98-2.71 2.71v.968h-1.246v1.16h1.246v5.756h2.203v-5.756h2.212l.55-1.16v.176zm-14.13-.036c-.512 0-.874-.362-.874-.874s.362-.875.874-.875.875.363.875.875-.363.874-.875.874zm1.101 5.966H7.867v-6.916h2.108v6.916zm-6.5-6.916l1.612 4.484 1.61-4.484h2.212l-2.717 6.916H6.076l-2.71-6.916h2.109zm18.11-.106a2.02 2.02 0 0 0-1.76 1.023v-.917h-1.986v6.916h2.108v-3.71c0-.917.55-1.51 1.4-1.51.25 0 .462.036.462.036v-1.802s-.106-.036-.224-.036z"/></svg>
+                Fiverr
+            </a>
         </div>
-        <div class="hidden md:flex gap-8 text-sm font-medium text-muted">
-            <a href="#about" class="hover:text-white transition-colors">About</a>
-            <a href="#skills" class="hover:text-white transition-colors">Stack</a>
-            <a href="#work" class="hover:text-white transition-colors">Gallery</a>
-            <a href="#contact" class="text-accent hover:text-amber transition-colors">Connect</a>
-        </div>
-    </nav>
+        <nav class="w-full glass-card rounded-none border-t-0 border-l-0 border-r-0 border-b border-white/10 py-4 px-6 md:px-12 flex justify-between items-center">
+            <div class="font-display font-bold text-xl tracking-tight text-white flex items-center gap-2">
+                <span class="text-accent">&lt;</span>Iktiar<span class="text-accent">/&gt;</span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-muted">
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#byproduct" class="hover:text-white transition-colors">Beyond the App</a>
+                <a href="#skills" class="hover:text-white transition-colors">Stack</a>
+                <a href="#work" class="hover:text-white transition-colors">Gallery</a>
+                <a href="#contact" class="text-accent hover:text-amber transition-colors">Connect</a>
+            </div>
+        </nav>
+    </div>
 
-    <section id="about" class="min-h-screen flex items-center justify-center pt-20 px-6 relative overflow-hidden">
+    <section id="about" class="min-h-screen flex items-center justify-center pt-40 pb-16 px-6 relative overflow-hidden">
         
         <div class="absolute top-1/4 left-1/4 w-12 h-12 rounded-xl border border-accent/30 rotate-45 animate-float opacity-50 z-0"></div>
         <div class="absolute bottom-1/4 right-1/4 w-16 h-16 rounded-full border border-amber/30 animate-float-delayed opacity-50 z-0"></div>
 
-        <div class="max-w-4xl mx-auto text-center z-10 reveal active">
-            
-            <div class="relative w-40 h-40 mx-auto mb-10">
-                <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-accent via-purple-500 to-amber animate-spin-slow blur-[2px]" style="padding: 3px;"></div>
-                <div class="relative w-full h-full rounded-full bg-navy border-4 border-navy overflow-hidden z-10 flex items-center justify-center shadow-[0_0_30px_rgba(76,141,255,0.4)]">
-                    <img src="./profile.png" alt="Iktiar Profile" class="w-full h-full object-cover block" onerror="this.src='profile.png'">
+        <div class="max-w-7xl mx-auto z-10 reveal active grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-16 items-center">
+
+            <div class="text-center lg:text-left">
+                <div class="relative w-24 h-24 mx-auto lg:mx-0 mb-8">
+                    <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-accent via-purple-500 to-amber animate-spin-slow blur-[2px]" style="padding: 3px;"></div>
+                    <div class="relative w-full h-full rounded-full bg-navy border-4 border-navy overflow-hidden z-10 flex items-center justify-center shadow-[0_0_30px_rgba(76,141,255,0.4)]">
+                        <img src="./profile.png" alt="Iktiar Profile" class="w-full h-full object-cover block" onerror="this.src='profile.png'">
+                    </div>
+                </div>
+
+                <div class="inline-block px-3 py-1 rounded text-xs font-mono text-neonGreen bg-neonGreen/10 mb-5 border border-neonGreen/20">Two deliverables, one engineer</div>
+
+                <h1 class="font-display text-5xl md:text-6xl font-bold leading-tight mb-6 text-white">
+                    Ship the app.<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#2E5BFF] to-purple-500">Own the dashboard.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-muted max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed font-light">
+                    I'm Iktiar, an app engineer based in Chattogram, BD. I don't just hand over an app — I build the whole system behind it: the product your users open, and the control panel <span class="text-white font-medium">you</span> use to run it. Manage content, moderate users, push updates, and read your numbers, all without waiting on an engineer.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start mb-8">
+                    <a href="#work" class="px-8 py-3.5 rounded-xl bg-accent text-navy font-bold hover:bg-white hover:scale-105 transition-all shadow-[0_0_20px_rgba(76,141,255,0.4)]">Explore Projects</a>
+                    <a href="#byproduct" class="px-8 py-3.5 rounded-xl glass-card font-bold text-white hover:border-amber transition-all flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m4 10V11m4 6V9M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        What You Actually Get
+                    </a>
+                </div>
+
+                <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                    <a href="https://www.upwork.com/freelancers/~01d1e6e01650df66dd" target="_blank" class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-upwork/10 hover:bg-upwork/20 border border-upwork/40 hover:border-upwork text-sm font-medium text-white transition-all duration-300 shadow-[0_0_15px_rgba(20,168,0,0.1)] hover:scale-105">
+                        <span class="flex h-2 w-2 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-upwork opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-upwork"></span>
+                        </span>
+                        Hire on <span class="font-bold text-white tracking-wide">Upwork</span>
+                    </a>
+                    <a href="https://www.fiverr.com/s/pdD54PG" target="_blank" class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-fiverr/10 hover:bg-fiverr/20 border border-fiverr/40 hover:border-fiverr text-sm font-medium text-white transition-all duration-300 shadow-[0_0_15px_rgba(29,191,115,0.1)] hover:scale-105">
+                        <span class="flex h-2 w-2 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-fiverr opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-fiverr"></span>
+                        </span>
+                        Hire on <span class="font-bold text-white tracking-wide">Fiverr</span>
+                    </a>
                 </div>
             </div>
 
-            <div class="flex justify-center gap-4 mb-6">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card text-xs font-bold text-white tracking-wide border-green-500/30">
-                    <span class="text-green-400">●</span> Available on Fiverr
-                </div>
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card text-xs font-bold text-white tracking-wide border-green-500/30">
-                    <span class="text-green-400">●</span> Available on Upwork
-                </div>
+            <div class="relative h-[420px] hidden lg:block">
+                <!-- Signature graphic: the app (phone) feeding a control dashboard, linked by a live data pulse -->
+                <svg viewBox="0 0 560 480" class="w-full h-full">
+                    <defs>
+                        <linearGradient id="phoneGrad" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#4C8DFF" stop-opacity="0.9"/>
+                            <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.9"/>
+                        </linearGradient>
+                        <linearGradient id="dashGrad" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#FFB86B"/>
+                            <stop offset="100%" stop-color="#00FF9D"/>
+                        </linearGradient>
+                    </defs>
+
+                    <!-- connecting pulse line -->
+                    <path d="M 190 260 C 250 220, 260 200, 320 190" stroke="#4C8DFF" stroke-width="2" fill="none" stroke-dasharray="6 6" opacity="0.6"/>
+                    <circle cx="190" cy="260" r="4" fill="#00FF9D"/>
+                    <circle cx="320" cy="190" r="4" fill="#FFB86B"/>
+
+                    <!-- Dashboard monitor (the byproduct: control panel) -->
+                    <g transform="translate(255,40)" class="animate-float-delayed">
+                        <rect x="0" y="0" width="280" height="190" rx="14" fill="#121A2B" stroke="url(#dashGrad)" stroke-width="1.5" opacity="0.96"/>
+                        <rect x="16" y="18" width="248" height="26" rx="6" fill="#0F172A" stroke="#FFB86B" stroke-opacity="0.3"/>
+                        <circle cx="28" cy="31" r="4" fill="#FF6B6B"/>
+                        <circle cx="42" cy="31" r="4" fill="#FFB86B"/>
+                        <circle cx="56" cy="31" r="4" fill="#00FF9D"/>
+                        <text x="150" y="35" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#8CA2C4">admin.dashboard</text>
+
+                        <rect x="16" y="56" width="118" height="52" rx="8" fill="#0F172A" stroke="#4C8DFF" stroke-opacity="0.35"/>
+                        <text x="26" y="72" font-family="JetBrains Mono, monospace" font-size="9" fill="#8CA2C4">ACTIVE USERS</text>
+                        <text x="26" y="96" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="700" fill="#00FF9D">12,840</text>
+
+                        <rect x="146" y="56" width="118" height="52" rx="8" fill="#0F172A" stroke="#FFB86B" stroke-opacity="0.35"/>
+                        <text x="156" y="72" font-family="JetBrains Mono, monospace" font-size="9" fill="#8CA2C4">PUSH QUEUE</text>
+                        <text x="156" y="96" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="700" fill="#FFB86B">Sent ✓</text>
+
+                        <rect x="16" y="118" width="248" height="52" rx="8" fill="#0F172A" stroke="#8B5CF6" stroke-opacity="0.35"/>
+                        <polyline points="26,158 50,140 74,150 98,132 122,145 146,120 170,138 194,128 218,142 242,124" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+                        <text x="26" y="132" font-family="JetBrains Mono, monospace" font-size="9" fill="#8CA2C4">LIVE ANALYTICS</text>
+                    </g>
+
+                    <!-- Phone mockup (the app) -->
+                    <g transform="translate(60,190)" class="animate-float">
+                        <rect x="0" y="0" width="150" height="270" rx="24" fill="#0B1220" stroke="url(#phoneGrad)" stroke-width="2.5"/>
+                        <rect x="8" y="14" width="134" height="242" rx="14" fill="#121A2B"/>
+                        <rect x="20" y="30" width="70" height="10" rx="5" fill="#4C8DFF" opacity="0.8"/>
+                        <rect x="20" y="52" width="110" height="60" rx="10" fill="#0F172A" stroke="#4C8DFF" stroke-opacity="0.3"/>
+                        <circle cx="45" cy="82" r="14" fill="#4C8DFF" opacity="0.6"/>
+                        <rect x="68" y="72" width="50" height="8" rx="4" fill="#8CA2C4"/>
+                        <rect x="68" y="88" width="35" height="6" rx="3" fill="#697098"/>
+                        <rect x="20" y="122" width="110" height="34" rx="8" fill="#0F172A" stroke="#00FF9D" stroke-opacity="0.3"/>
+                        <rect x="20" y="164" width="110" height="34" rx="8" fill="#0F172A" stroke="#FFB86B" stroke-opacity="0.3"/>
+                        <rect x="45" y="228" width="60" height="8" rx="4" fill="#4C8DFF" opacity="0.5"/>
+                    </g>
+
+                    <text x="330" y="270" font-family="JetBrains Mono, monospace" font-size="11" fill="#00FF9D" opacity="0.8">// synced in real-time</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section id="byproduct" class="py-24 px-6 relative z-10 border-t border-white/5">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-block px-3 py-1 rounded text-xs font-mono text-neonGreen bg-neonGreen/10 mb-4 border border-neonGreen/20">The Real Deliverable</div>
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 text-white">An app is only half the build.</h2>
+                <p class="text-muted max-w-2xl mx-auto text-lg">Every product I ship comes with the tooling to run it — so managing your business never means opening a code editor.</p>
             </div>
 
-            <h1 class="font-display text-5xl md:text-7xl font-bold leading-tight mb-6 text-white">
-                Building the Future,<br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#2E5BFF] to-purple-500">Cross-Platform.</span>
-            </h1>
-            <p class="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-                I am a Flutter Architect based in Chattogram, BD. I engineer high-performance, pixel-perfect applications for iOS, Android, and Web using a single, elegant Dart codebase.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-5 justify-center">
-                <a href="#work" class="px-8 py-3.5 rounded-xl bg-accent text-navy font-bold hover:bg-white hover:scale-105 transition-all shadow-[0_0_20px_rgba(76,141,255,0.4)]">Explore Projects</a>
-                <a href="#skills" class="px-8 py-3.5 rounded-xl glass-card font-bold text-white hover:border-amber transition-all flex items-center justify-center gap-2">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                    View Stack
-                </a>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <div class="glass-card rounded-2xl p-6 reveal">
+                    <div class="w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center mb-5 text-accent">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m4 10V11m4 6V9M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">Admin Dashboards</h3>
+                    <p class="text-sm text-muted leading-relaxed">A web-based control room where you manage users, approve content, and flip feature switches — no engineer required for day-to-day operations.</p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 reveal" style="transition-delay: 60ms;">
+                    <div class="w-12 h-12 rounded-xl bg-amber/15 flex items-center justify-center mb-5 text-amber">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">Push & Notification Control</h3>
+                    <p class="text-sm text-muted leading-relaxed">Send targeted alerts, promos, or announcements straight from a panel — schedule them, segment your audience, and track opens.</p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 reveal" style="transition-delay: 120ms;">
+                    <div class="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center mb-5 text-purple-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">Live Analytics & Reporting</h3>
+                    <p class="text-sm text-muted leading-relaxed">Real number, not vanity metrics: retention, revenue, drop-off points — visualized where decision-makers actually look.</p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 reveal" style="transition-delay: 0ms;">
+                    <div class="w-12 h-12 rounded-xl bg-neonGreen/15 flex items-center justify-center mb-5 text-neonGreen">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-2.13a4 4 0 10-4-4 4 4 0 004 4zm6 0a4 4 0 10-4-4"/></svg>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">Roles & Permissions</h3>
+                    <p class="text-sm text-muted leading-relaxed">Editors, moderators, support staff, owners — everyone gets exactly the access they need, and nothing more.</p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 reveal" style="transition-delay: 60ms;">
+                    <div class="w-12 h-12 rounded-xl bg-blue-400/15 flex items-center justify-center mb-5 text-blue-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">Content Without Deploys</h3>
+                    <p class="text-sm text-muted leading-relaxed">Edit copy, swap banners, publish articles or courses from a CMS panel — changes reach the app instantly, no App Store review.</p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 reveal" style="transition-delay: 120ms;">
+                    <div class="w-12 h-12 rounded-xl bg-rose-400/15 flex items-center justify-center mb-5 text-rose-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">One Backend, Every Screen</h3>
+                    <p class="text-sm text-muted leading-relaxed">The mobile app, the web dashboard, and any partner-facing portal all read from the same source of truth — nothing goes out of sync.</p>
+                </div>
+
             </div>
         </div>
     </section>
@@ -183,9 +336,9 @@
         <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 items-center reveal">
             <div class="lg:w-1/2">
                 <div class="inline-block px-3 py-1 rounded text-xs font-mono text-amber bg-amber/10 mb-4 border border-amber/20">System Architecture</div>
-                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 text-white">The Engineering Core</h2>
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 text-white">One codebase, both surfaces.</h2>
                 <p class="text-muted text-lg leading-relaxed mb-8">
-                    I build reactive, scalable applications. By leveraging <span class="text-accent font-medium">Riverpod</span> for robust state management and maintaining strict separation of concerns, my apps remain highly testable and performant across all screens.
+                    The mobile app and its admin dashboard share one architecture. By leaning on <span class="text-accent font-medium">Riverpod</span> for state and a strict data layer underneath, I stand up a web dashboard from the same models and API calls the app already uses — so both stay in sync, always.
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-mono text-muted">
                     <div class="glass-card p-4 rounded-xl flex items-center gap-3">
@@ -203,6 +356,10 @@
                     <div class="glass-card p-4 rounded-xl flex items-center gap-3">
                         <div class="w-8 h-8 rounded bg-neonGreen/20 flex items-center justify-center text-neonGreen">🎨</div>
                         Custom RenderObjects & UX
+                    </div>
+                    <div class="glass-card p-4 rounded-xl flex items-center gap-3 sm:col-span-2">
+                        <div class="w-8 h-8 rounded bg-blue-400/20 flex items-center justify-center text-blue-400">🖥</div>
+                        Flutter Web & React Admin Panels
                     </div>
                 </div>
             </div>
@@ -235,6 +392,10 @@
                     <div>&nbsp;&nbsp;<span class="yaml-key">firebase_core</span>: <span class="yaml-val">^2.24.2</span></div>
                     <div>&nbsp;&nbsp;<span class="yaml-key">dio</span>: <span class="yaml-val">^5.4.0</span></div>
                     <div>&nbsp;&nbsp;<span class="yaml-key">freezed_annotation</span>: <span class="yaml-val">^2.4.1</span></div>
+                    <div class="mt-2 bg-white/5 -mx-4 px-4 py-1 border-l-2 border-amber">
+                        &nbsp;&nbsp;<span class="yaml-key">syncfusion_flutter_charts</span>: <span class="yaml-val">^24.2.9</span> <span class="text-amber text-xs ml-2"># Admin dashboard graphs</span>
+                    </div>
+                    <div>&nbsp;&nbsp;<span class="yaml-key">firebase_admin</span>: <span class="yaml-val">^1.2.0</span> <span class="yaml-comment"># Server-side control</span></div>
                     <div class="mt-4"><span class="yaml-key">dev_dependencies</span>:</div>
                     <div>&nbsp;&nbsp;<span class="yaml-key">build_runner</span>: <span class="yaml-val">^2.4.7</span><span class="cursor-blink"></span></div>
                 </div>
@@ -246,18 +407,19 @@
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 text-white">Project Gallery</h2>
-                <p class="text-muted max-w-2xl mx-auto">A selection of production-ready applications, optimized for performance across iOS, Android, and Web platforms.</p>
+                <p class="text-muted max-w-2xl mx-auto">Nine products, each shipped as an app plus the tooling that runs it — the part clients actually live in day to day.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
                 <div class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden">
                     <div class="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2E5BFF] to-accent flex items-center justify-center mb-6 text-white font-display font-bold text-2xl shadow-lg relative z-10">
-                        pS
+                    <div class="flex items-start justify-between mb-6 relative z-10">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2E5BFF] to-accent flex items-center justify-center text-white font-display font-bold text-2xl shadow-lg">pS</div>
+                        <span class="text-[10px] font-mono text-accent bg-accent/10 border border-accent/30 px-2 py-1 rounded-md">+ Moderation Dashboard</span>
                     </div>
                     <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-accent transition-colors">puSocials</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A robust social networking app. Fixed complex native build pipelines, resolved release keystore discrepancies, and implemented a flawless native Android splash screen.</p>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A social network for a growing community. Shipped the mobile app plus a moderation console where the team reviews reports, bans accounts, and reads engagement stats — no App Store re-review needed to act.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
                         <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Flutter</span>
                         <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-purple-400 border border-purple-400/30">Firebase</span>
@@ -267,11 +429,12 @@
 
                 <div class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden" style="transition-delay: 100ms;">
                     <div class="absolute inset-0 bg-gradient-to-br from-amber/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber to-orange-500 flex items-center justify-center mb-6 text-white font-display font-bold text-2xl shadow-lg relative z-10">
-                        Lx
+                    <div class="flex items-start justify-between mb-6 relative z-10">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber to-orange-500 flex items-center justify-center text-white font-display font-bold text-2xl shadow-lg">Lx</div>
+                        <span class="text-[10px] font-mono text-amber bg-amber/10 border border-amber/30 px-2 py-1 rounded-md">Offline-First</span>
                     </div>
                     <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-amber transition-colors">bdLegal Lexicon</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">Professional translation utility for socioeconomic and legal terminology. Engineered strict linguistic accuracy scaling and high-speed local data queries using local DB.</p>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A professional reference tool for legal and socioeconomic terminology, built so lawyers can search thousands of entries instantly, even with no signal, on a local on-device database.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
                         <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Riverpod</span>
                         <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-green-400 border border-green-400/30">SQLite</span>
@@ -281,11 +444,12 @@
 
                 <div class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden" style="transition-delay: 200ms;">
                     <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mb-6 text-white font-display font-bold text-2xl shadow-lg relative z-10">
-                        PA
+                    <div class="flex items-start justify-between mb-6 relative z-10">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-display font-bold text-2xl shadow-lg">PA</div>
+                        <span class="text-[10px] font-mono text-purple-400 bg-purple-500/10 border border-purple-400/30 px-2 py-1 rounded-md">+ CMS Panel</span>
                     </div>
                     <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-purple-400 transition-colors">Regional ePaper</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">Streamlined news aggregator fetching regional data APIs natively. Features seamless pagination, offline caching, and native Bengali typography rendering.</p>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A regional news reader with native Bengali typography and offline caching — paired with a publishing panel where editors schedule stories and push breaking-news alerts themselves.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
                         <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Dio API</span>
                         <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-neonGreen border border-neonGreen/30">Caching</span>
@@ -294,11 +458,12 @@
 
                 <div class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden" style="transition-delay: 0ms;">
                     <div class="absolute inset-0 bg-gradient-to-br from-neonGreen/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-700 flex items-center justify-center mb-6 text-white font-display font-bold text-2xl shadow-lg relative z-10">
-                        ₿
+                    <div class="flex items-start justify-between mb-6 relative z-10">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-700 flex items-center justify-center text-white font-display font-bold text-2xl shadow-lg">₿</div>
+                        <span class="text-[10px] font-mono text-neonGreen bg-neonGreen/10 border border-neonGreen/30 px-2 py-1 rounded-md">+ Watchlist Console</span>
                     </div>
                     <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-neonGreen transition-colors">CryptoTracker FX</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A high-frequency financial tracking app. Utilizes WebSockets for real-time market data streaming and Riverpod for zero-lag UI updates on live candlestick charts.</p>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A high-frequency market tracker streaming live candlesticks over WebSockets, plus an ops console for configuring tracked assets, alert thresholds, and API rate budgets.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
                         <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Riverpod</span>
                         <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-purple-400 border border-purple-400/30">WebSockets</span>
@@ -308,11 +473,12 @@
 
                 <div class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden" style="transition-delay: 100ms;">
                     <div class="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center mb-6 text-white font-display font-bold text-2xl shadow-lg relative z-10">
-                        AI
+                    <div class="flex items-start justify-between mb-6 relative z-10">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center text-white font-display font-bold text-2xl shadow-lg">AI</div>
+                        <span class="text-[10px] font-mono text-blue-400 bg-blue-400/10 border border-blue-400/30 px-2 py-1 rounded-md">+ Admin Console</span>
                     </div>
                     <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-blue-400 transition-colors">SmartChat AI</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">AI-enhanced real-time messaging application. Integrated conversational AI models via RESTful API alongside a highly responsive, custom-animated chat interface.</p>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">An AI messaging app with a custom-animated chat surface, backed by an admin console for swapping prompts and models, capping usage, and reviewing flagged conversations.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
                         <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Gemini API</span>
                         <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-purple-400 border border-purple-400/30">Firebase Auth</span>
@@ -321,15 +487,58 @@
 
                 <div class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden" style="transition-delay: 200ms;">
                     <div class="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-700 flex items-center justify-center mb-6 text-white font-display font-bold text-2xl shadow-lg relative z-10">
-                        EL
+                    <div class="flex items-start justify-between mb-6 relative z-10">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-700 flex items-center justify-center text-white font-display font-bold text-2xl shadow-lg">EL</div>
+                        <span class="text-[10px] font-mono text-pink-400 bg-pink-500/10 border border-pink-400/30 px-2 py-1 rounded-md">+ Instructor Dashboard</span>
                     </div>
                     <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-pink-400 transition-colors">EduLearn Platform</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A modular e-learning platform. Engineered a custom video player overlay, offline course downloading, and state-driven progress tracking using Riverpod.</p>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A course app with offline downloads and a custom video player, matched with an instructor dashboard for uploading lessons, grading, and tracking every student's progress.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
                         <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Riverpod</span>
                         <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-neonGreen border border-neonGreen/30">Video/Media</span>
                         <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Isolates</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden" style="transition-delay: 0ms;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-orange-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="flex items-start justify-between mb-6 relative z-10">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center text-white font-display font-bold text-2xl shadow-lg">Fl</div>
+                        <span class="text-[10px] font-mono text-orange-400 bg-orange-500/10 border border-orange-400/30 px-2 py-1 rounded-md">+ Fleet Control Map</span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-orange-400 transition-colors">FleetOps Tracker</h3>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A driver-facing delivery app streaming GPS pings, mirrored on a live fleet dashboard with geofencing, route replay, and dispatch tools for the ops team back at the office.</p>
+                    <div class="flex flex-wrap gap-2 mt-auto relative z-10">
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Google Maps SDK</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-purple-400 border border-purple-400/30">WebSockets</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden" style="transition-delay: 100ms;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="flex items-start justify-between mb-6 relative z-10">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-400 to-teal-600 flex items-center justify-center text-white font-display font-bold text-2xl shadow-lg">Cq</div>
+                        <span class="text-[10px] font-mono text-cyan-400 bg-cyan-400/10 border border-cyan-400/30 px-2 py-1 rounded-md">+ Front-Desk Panel</span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-cyan-400 transition-colors">ClinicQueue</h3>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A patient app for booking appointments and checking queue position, paired with a front-desk panel where staff manage schedules, reassign slots, and message patients in real time.</p>
+                    <div class="flex flex-wrap gap-2 mt-auto relative z-10">
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Firestore</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Push Notifications</span>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden" style="transition-delay: 200ms;">
+                    <div class="absolute inset-0 bg-gradient-to-br from-lime-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="flex items-start justify-between mb-6 relative z-10">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-lime-500 to-green-700 flex items-center justify-center text-white font-display font-bold text-2xl shadow-lg">Rp</div>
+                        <span class="text-[10px] font-mono text-lime-400 bg-lime-400/10 border border-lime-400/30 px-2 py-1 rounded-md">+ Owner Dashboard</span>
+                    </div>
+                    <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-lime-400 transition-colors">RetailPulse POS</h3>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A tablet point-of-sale app for checkout staff, wired to an owner's dashboard showing daily sales, low-stock alerts, and staff performance across every branch.</p>
+                    <div class="flex flex-wrap gap-2 mt-auto relative z-10">
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Riverpod</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-green-400 border border-green-400/30">Inventory Sync</span>
                     </div>
                 </div>
 
@@ -342,7 +551,7 @@
             <div class="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-[50px] -translate-y-1/2 translate-x-1/3"></div>
             
             <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 text-white relative z-10">Ready to Compile?</h2>
-            <p class="text-muted mb-10 text-lg relative z-10">Whether it's debugging a release build, architecting a new app from scratch, or refining the UX of an existing project, I'm ready to push code.</p>
+            <p class="text-muted mb-10 text-lg relative z-10">Whether it's a new app and its admin dashboard from scratch, a debugging pass on a release build, or bolting a control panel onto something that already exists — I'm ready to push code.</p>
             
             <div class="flex flex-wrap justify-center gap-4 md:gap-6 relative z-10">
                 <a href="mailto:iktiarnazib@gmail.com" class="px-8 py-4 rounded-xl bg-accent text-navy font-bold hover:bg-white transition-all shadow-[0_0_20px_rgba(76,141,255,0.3)]">
@@ -359,9 +568,9 @@
         
         <div class="mt-20 text-center flex flex-col items-center gap-4">
             <div class="flex items-center gap-4 text-xs font-bold text-white/50 tracking-widest">
-                <span class="hover:text-green-400 transition-colors cursor-pointer">FIVERR</span>
+                <a href="https://www.fiverr.com/s/pdD54PG" target="_blank" class="hover:text-fiverr transition-colors">FIVERR</a>
                 <span>|</span>
-                <span class="hover:text-green-400 transition-colors cursor-pointer">UPWORK</span>
+                <a href="https://www.upwork.com/freelancers/~01d1e6e01650df66dd" target="_blank" class="hover:text-upwork transition-colors">UPWORK</a>
             </div>
             <div class="text-sm text-muted/40 font-mono">
                 &copy; 2026 Iktiar. Built with structural Flutter concepts, rendered in HTML/CSS.
