@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iktiar - App & Dashboard Architect</title>
+    <title>Iktiar | Custom Apps With a Built-In Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <script>
@@ -114,10 +114,10 @@
             50% { opacity: 0; }
         }
 
-        .yaml-key { color: #FFB86B; font-weight: 500; }
-        .yaml-val { color: #A6ACCD; }
-        .yaml-str { color: #00FF9D; }
-        .yaml-comment { color: #697098; font-style: italic; }
+        .check-label { color: #FFB86B; font-weight: 500; }
+        .check-val { color: #A6ACCD; }
+        .check-str { color: #00FF9D; }
+        .check-comment { color: #697098; font-style: italic; }
     </style>
 </head>
 <body class="antialiased selection:bg-accent selection:text-white relative">
@@ -150,11 +150,11 @@
                 <span class="text-accent">&lt;</span>Iktiar<span class="text-accent">/&gt;</span>
             </div>
             <div class="hidden md:flex gap-8 text-sm font-medium text-muted">
-                <a href="#about" class="hover:text-white transition-colors">About</a>
-                <a href="#byproduct" class="hover:text-white transition-colors">Beyond the App</a>
-                <a href="#skills" class="hover:text-white transition-colors">Stack</a>
-                <a href="#work" class="hover:text-white transition-colors">Gallery</a>
-                <a href="#contact" class="text-accent hover:text-amber transition-colors">Connect</a>
+                <a href="#about" class="hover:text-white transition-colors">Overview</a>
+                <a href="#byproduct" class="hover:text-white transition-colors">What You Get</a>
+                <a href="#skills" class="hover:text-white transition-colors">How It Works</a>
+                <a href="#work" class="hover:text-white transition-colors">Projects</a>
+                <a href="#contact" class="text-accent hover:text-amber transition-colors">Get in Touch</a>
             </div>
         </nav>
     </div>
@@ -174,17 +174,17 @@
                     </div>
                 </div>
 
-                <div class="inline-block px-3 py-1 rounded text-xs font-mono text-neonGreen bg-neonGreen/10 mb-5 border border-neonGreen/20">Two deliverables, one engineer</div>
+                <div class="inline-block px-3 py-1 rounded text-xs font-mono text-neonGreen bg-neonGreen/10 mb-5 border border-neonGreen/20">Your app, plus a way to run it yourself</div>
 
                 <h1 class="font-display text-5xl md:text-6xl font-bold leading-tight mb-6 text-white">
-                    Ship the app.<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#2E5BFF] to-purple-500">Own the dashboard.</span>
+                    You get the app.<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#2E5BFF] to-purple-500">You also get to run it.</span>
                 </h1>
                 <p class="text-lg md:text-xl text-muted max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed font-light">
-                    I'm Iktiar, an app engineer based in Chattogram, BD. I don't just hand over an app — I build the whole system behind it: the product your users open, and the control panel <span class="text-white font-medium">you</span> use to run it. Manage content, moderate users, push updates, and read your numbers, all without waiting on an engineer.
+                    Hi, I'm Iktiar, a mobile app developer. When I build your app, you don't just walk away with the app itself. You also get a simple control panel so you can run things on your own: update content, manage users, send notifications, and check your numbers, all without calling a developer every time you need a small change.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-5 justify-center lg:justify-start mb-8">
-                    <a href="#work" class="px-8 py-3.5 rounded-xl bg-accent text-navy font-bold hover:bg-white hover:scale-105 transition-all shadow-[0_0_20px_rgba(76,141,255,0.4)]">Explore Projects</a>
+                    <a href="#work" class="px-8 py-3.5 rounded-xl bg-accent text-navy font-bold hover:bg-white hover:scale-105 transition-all shadow-[0_0_20px_rgba(76,141,255,0.4)]">See Example Projects</a>
                     <a href="#byproduct" class="px-8 py-3.5 rounded-xl glass-card font-bold text-white hover:border-amber transition-all flex items-center justify-center gap-2">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m4 10V11m4 6V9M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                         What You Actually Get
@@ -235,7 +235,7 @@
                         <circle cx="28" cy="31" r="4" fill="#FF6B6B"/>
                         <circle cx="42" cy="31" r="4" fill="#FFB86B"/>
                         <circle cx="56" cy="31" r="4" fill="#00FF9D"/>
-                        <text x="150" y="35" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#8CA2C4">admin.dashboard</text>
+                        <text x="150" y="35" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#8CA2C4">your.dashboard</text>
 
                         <rect x="16" y="56" width="118" height="52" rx="8" fill="#0F172A" stroke="#4C8DFF" stroke-opacity="0.35"/>
                         <text x="26" y="72" font-family="JetBrains Mono, monospace" font-size="9" fill="#8CA2C4">ACTIVE USERS</text>
@@ -264,7 +264,7 @@
                         <rect x="45" y="228" width="60" height="8" rx="4" fill="#4C8DFF" opacity="0.5"/>
                     </g>
 
-                    <text x="330" y="270" font-family="JetBrains Mono, monospace" font-size="11" fill="#00FF9D" opacity="0.8">// synced in real-time</text>
+                    <text x="330" y="270" font-family="JetBrains Mono, monospace" font-size="11" fill="#00FF9D" opacity="0.8">// your app and dashboard, always in sync</text>
                 </svg>
             </div>
         </div>
@@ -273,9 +273,9 @@
     <section id="byproduct" class="py-24 px-6 relative z-10 border-t border-white/5">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16 reveal">
-                <div class="inline-block px-3 py-1 rounded text-xs font-mono text-neonGreen bg-neonGreen/10 mb-4 border border-neonGreen/20">The Real Deliverable</div>
-                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 text-white">An app is only half the build.</h2>
-                <p class="text-muted max-w-2xl mx-auto text-lg">Every product I ship comes with the tooling to run it — so managing your business never means opening a code editor.</p>
+                <div class="inline-block px-3 py-1 rounded text-xs font-mono text-neonGreen bg-neonGreen/10 mb-4 border border-neonGreen/20">What You Actually Get</div>
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 text-white">You stay in control, even after launch.</h2>
+                <p class="text-muted max-w-2xl mx-auto text-lg">Add an offer, message your users, check how your business is doing, all on your own. You won't need to wait on a developer or touch a single line of code.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -284,48 +284,48 @@
                     <div class="w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center mb-5 text-accent">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m4 10V11m4 6V9M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
                     </div>
-                    <h3 class="font-display font-bold text-lg text-white mb-2">Admin Dashboards</h3>
-                    <p class="text-sm text-muted leading-relaxed">A web-based control room where you manage users, approve content, and flip feature switches — no engineer required for day-to-day operations.</p>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">Your Own Control Panel</h3>
+                    <p class="text-sm text-muted leading-relaxed">A simple website where you can manage users, approve content, and turn features on or off yourself. No developer needed for everyday tasks.</p>
                 </div>
 
                 <div class="glass-card rounded-2xl p-6 reveal" style="transition-delay: 60ms;">
                     <div class="w-12 h-12 rounded-xl bg-amber/15 flex items-center justify-center mb-5 text-amber">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
                     </div>
-                    <h3 class="font-display font-bold text-lg text-white mb-2">Push & Notification Control</h3>
-                    <p class="text-sm text-muted leading-relaxed">Send targeted alerts, promos, or announcements straight from a panel — schedule them, segment your audience, and track opens.</p>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">Send Notifications Yourself</h3>
+                    <p class="text-sm text-muted leading-relaxed">Send announcements, promos, or alerts straight from your panel. Schedule them ahead of time, target specific groups of users, and see who actually opened them.</p>
                 </div>
 
                 <div class="glass-card rounded-2xl p-6 reveal" style="transition-delay: 120ms;">
                     <div class="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center mb-5 text-purple-400">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
                     </div>
-                    <h3 class="font-display font-bold text-lg text-white mb-2">Live Analytics & Reporting</h3>
-                    <p class="text-sm text-muted leading-relaxed">Real number, not vanity metrics: retention, revenue, drop-off points — visualized where decision-makers actually look.</p>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">See Your Numbers</h3>
+                    <p class="text-sm text-muted leading-relaxed">Real numbers that matter: who's sticking around, where you're making money, and where people are dropping off, all laid out clearly so you can actually use them.</p>
                 </div>
 
                 <div class="glass-card rounded-2xl p-6 reveal" style="transition-delay: 0ms;">
                     <div class="w-12 h-12 rounded-xl bg-neonGreen/15 flex items-center justify-center mb-5 text-neonGreen">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-2.13a4 4 0 10-4-4 4 4 0 004 4zm6 0a4 4 0 10-4-4"/></svg>
                     </div>
-                    <h3 class="font-display font-bold text-lg text-white mb-2">Roles & Permissions</h3>
-                    <p class="text-sm text-muted leading-relaxed">Editors, moderators, support staff, owners — everyone gets exactly the access they need, and nothing more.</p>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">Give Your Team Access</h3>
+                    <p class="text-sm text-muted leading-relaxed">Editors, moderators, support staff, and owners each get exactly the access they need to do their job, and nothing more.</p>
                 </div>
 
                 <div class="glass-card rounded-2xl p-6 reveal" style="transition-delay: 60ms;">
                     <div class="w-12 h-12 rounded-xl bg-blue-400/15 flex items-center justify-center mb-5 text-blue-400">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
                     </div>
-                    <h3 class="font-display font-bold text-lg text-white mb-2">Content Without Deploys</h3>
-                    <p class="text-sm text-muted leading-relaxed">Edit copy, swap banners, publish articles or courses from a CMS panel — changes reach the app instantly, no App Store review.</p>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">Update Content Anytime</h3>
+                    <p class="text-sm text-muted leading-relaxed">Change text, swap banners, and publish new articles or lessons all from a simple panel. Updates show up in your app right away, with no waiting on an app store review.</p>
                 </div>
 
                 <div class="glass-card rounded-2xl p-6 reveal" style="transition-delay: 120ms;">
                     <div class="w-12 h-12 rounded-xl bg-rose-400/15 flex items-center justify-center mb-5 text-rose-400">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     </div>
-                    <h3 class="font-display font-bold text-lg text-white mb-2">One Backend, Every Screen</h3>
-                    <p class="text-sm text-muted leading-relaxed">The mobile app, the web dashboard, and any partner-facing portal all read from the same source of truth — nothing goes out of sync.</p>
+                    <h3 class="font-display font-bold text-lg text-white mb-2">Nothing Ever Falls Out of Sync</h3>
+                    <p class="text-sm text-muted leading-relaxed">Your app, your dashboard, and any partner-facing portal all show the same information at the same time. Nothing ever drifts out of sync.</p>
                 </div>
 
             </div>
@@ -335,31 +335,31 @@
     <section id="skills" class="py-24 px-6 relative z-10 border-t border-white/5 bg-gradient-to-b from-transparent to-surface/40">
         <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 items-center reveal">
             <div class="lg:w-1/2">
-                <div class="inline-block px-3 py-1 rounded text-xs font-mono text-amber bg-amber/10 mb-4 border border-amber/20">System Architecture</div>
-                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 text-white">One codebase, both surfaces.</h2>
+                <div class="inline-block px-3 py-1 rounded text-xs font-mono text-amber bg-amber/10 mb-4 border border-amber/20">How It Works</div>
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 text-white">One project, working together.</h2>
                 <p class="text-muted text-lg leading-relaxed mb-8">
-                    The mobile app and its admin dashboard share one architecture. By leaning on <span class="text-accent font-medium">Riverpod</span> for state and a strict data layer underneath, I stand up a web dashboard from the same models and API calls the app already uses — so both stay in sync, always.
+                    Your app and its dashboard aren't two separate projects stuck together. They share the same information underneath, so the moment something happens in your app, it shows up in your dashboard too. Nothing extra to maintain, and no risk of the two ever falling out of step.
                 </p>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-mono text-muted">
                     <div class="glass-card p-4 rounded-xl flex items-center gap-3">
                         <div class="w-8 h-8 rounded bg-accent/20 flex items-center justify-center text-accent">◈</div>
-                        Riverpod & Hooks
+                        Smooth, No Lag
                     </div>
                     <div class="glass-card p-4 rounded-xl flex items-center gap-3">
                         <div class="w-8 h-8 rounded bg-amber/20 flex items-center justify-center text-amber">⚙</div>
-                        Native Build Pipelines (AAB/IPA)
+                        Ready for the App Store & Google Play
                     </div>
                     <div class="glass-card p-4 rounded-xl flex items-center gap-3">
                         <div class="w-8 h-8 rounded bg-purple-500/20 flex items-center justify-center text-purple-400">⚡</div>
-                        Firebase / REST / WebSockets
+                        Updates in Real Time
                     </div>
                     <div class="glass-card p-4 rounded-xl flex items-center gap-3">
                         <div class="w-8 h-8 rounded bg-neonGreen/20 flex items-center justify-center text-neonGreen">🎨</div>
-                        Custom RenderObjects & UX
+                        Custom Look and Smooth Motion
                     </div>
                     <div class="glass-card p-4 rounded-xl flex items-center gap-3 sm:col-span-2">
                         <div class="w-8 h-8 rounded bg-blue-400/20 flex items-center justify-center text-blue-400">🖥</div>
-                        Flutter Web & React Admin Panels
+                        A Dashboard You Can Open From Any Browser
                     </div>
                 </div>
             </div>
@@ -373,31 +373,29 @@
                     </div>
                     <div class="text-xs text-muted/80 font-mono mx-auto pr-8 flex items-center gap-2">
                         <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                        pubspec.yaml
+                        what_you_get.txt
                     </div>
                 </div>
                 <div class="p-6 md:p-8 font-mono text-sm md:text-base leading-relaxed overflow-x-auto bg-[#0F172A]">
-                    <div><span class="yaml-key">name</span>: <span class="yaml-val">iktiar_portfolio</span></div>
-                    <div><span class="yaml-key">description</span>: <span class="yaml-str">"Premium Cross-Platform App Engineer"</span></div>
-                    <div class="mt-4"><span class="yaml-comment"># Environment Foundation</span></div>
-                    <div><span class="yaml-key">environment</span>:</div>
-                    <div>&nbsp;&nbsp;<span class="yaml-key">sdk</span>: <span class="yaml-str">">=3.0.0 &lt;4.0.0"</span></div>
-                    <div class="mt-4"><span class="yaml-comment"># Core Dependencies</span></div>
-                    <div><span class="yaml-key">dependencies</span>:</div>
-                    <div>&nbsp;&nbsp;<span class="yaml-key">flutter</span>:</div>
-                    <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="yaml-key">sdk</span>: <span class="yaml-val">flutter</span></div>
+                    <div><span class="check-label">Project</span>: <span class="check-val">Your App</span></div>
+                    <div><span class="check-label">Purpose</span>: <span class="check-str">"Built around what your business actually needs"</span></div>
+                    <div class="mt-4"><span class="check-comment"># Every project starts here</span></div>
+                    <div><span class="check-label">Timeline</span>:</div>
+                    <div>&nbsp;&nbsp;<span class="check-label">start to launch</span>: <span class="check-str">"clear, no surprises"</span></div>
+                    <div class="mt-4"><span class="check-comment"># What's included, every time</span></div>
+                    <div><span class="check-label">included</span>:</div>
                     <div class="mt-2 bg-white/5 -mx-4 px-4 py-1 border-l-2 border-accent">
-                        &nbsp;&nbsp;<span class="yaml-key">flutter_riverpod</span>: <span class="yaml-val">^2.4.9</span> <span class="text-accent text-xs ml-2"># Primary State Management</span>
+                        &nbsp;&nbsp;<span class="check-val">Working app for iPhone and Android</span> <span class="text-accent text-xs ml-2"># Ready to publish</span>
                     </div>
-                    <div>&nbsp;&nbsp;<span class="yaml-key">firebase_core</span>: <span class="yaml-val">^2.24.2</span></div>
-                    <div>&nbsp;&nbsp;<span class="yaml-key">dio</span>: <span class="yaml-val">^5.4.0</span></div>
-                    <div>&nbsp;&nbsp;<span class="yaml-key">freezed_annotation</span>: <span class="yaml-val">^2.4.1</span></div>
+                    <div>&nbsp;&nbsp;<span class="check-val">Your own admin dashboard</span></div>
+                    <div>&nbsp;&nbsp;<span class="check-val">Push notifications, ready to send</span></div>
+                    <div>&nbsp;&nbsp;<span class="check-val">Clean, custom design</span></div>
                     <div class="mt-2 bg-white/5 -mx-4 px-4 py-1 border-l-2 border-amber">
-                        &nbsp;&nbsp;<span class="yaml-key">syncfusion_flutter_charts</span>: <span class="yaml-val">^24.2.9</span> <span class="text-amber text-xs ml-2"># Admin dashboard graphs</span>
+                        &nbsp;&nbsp;<span class="check-val">Live charts and simple reports</span> <span class="text-amber text-xs ml-2"># See what's happening at a glance</span>
                     </div>
-                    <div>&nbsp;&nbsp;<span class="yaml-key">firebase_admin</span>: <span class="yaml-val">^1.2.0</span> <span class="yaml-comment"># Server-side control</span></div>
-                    <div class="mt-4"><span class="yaml-key">dev_dependencies</span>:</div>
-                    <div>&nbsp;&nbsp;<span class="yaml-key">build_runner</span>: <span class="yaml-val">^2.4.7</span><span class="cursor-blink"></span></div>
+                    <div>&nbsp;&nbsp;<span class="check-val">Everything kept in sync automatically</span> <span class="check-comment"># No extra work for you</span></div>
+                    <div class="mt-4"><span class="check-label">support</span>:</div>
+                    <div>&nbsp;&nbsp;<span class="check-val">Help after launch, whenever you need it</span><span class="cursor-blink"></span></div>
                 </div>
             </div>
         </div>
@@ -407,7 +405,7 @@
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-16 reveal">
                 <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 text-white">Project Gallery</h2>
-                <p class="text-muted max-w-2xl mx-auto">Nine products, each shipped as an app plus the tooling that runs it — the part clients actually live in day to day.</p>
+                <p class="text-muted max-w-2xl mx-auto">Nine real projects. Each one came with an app plus the dashboard or panel that runs it, the part clients actually use every single day.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -419,11 +417,11 @@
                         <span class="text-[10px] font-mono text-accent bg-accent/10 border border-accent/30 px-2 py-1 rounded-md">+ Moderation Dashboard</span>
                     </div>
                     <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-accent transition-colors">puSocials</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A social network for a growing community. Shipped the mobile app plus a moderation console where the team reviews reports, bans accounts, and reads engagement stats — no App Store re-review needed to act.</p>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A social app for a growing community. Alongside it, the team got a moderation dashboard so they can review reports, ban accounts, and check engagement numbers instantly, without needing an app update to act.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Flutter</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-purple-400 border border-purple-400/30">Firebase</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">AAB Build</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Works on iPhone & Android</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-purple-400 border border-purple-400/30">Live Data Updates</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Ready to Launch</span>
                     </div>
                 </div>
 
@@ -431,14 +429,14 @@
                     <div class="absolute inset-0 bg-gradient-to-br from-amber/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div class="flex items-start justify-between mb-6 relative z-10">
                         <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber to-orange-500 flex items-center justify-center text-white font-display font-bold text-2xl shadow-lg">Lx</div>
-                        <span class="text-[10px] font-mono text-amber bg-amber/10 border border-amber/30 px-2 py-1 rounded-md">Offline-First</span>
+                        <span class="text-[10px] font-mono text-amber bg-amber/10 border border-amber/30 px-2 py-1 rounded-md">Works Offline</span>
                     </div>
                     <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-amber transition-colors">bdLegal Lexicon</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A professional reference tool for legal and socioeconomic terminology, built so lawyers can search thousands of entries instantly, even with no signal, on a local on-device database.</p>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A reference app for legal and social-science terms, built for lawyers who need answers fast. It works completely offline, searching thousands of entries instantly, even with zero signal.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Riverpod</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-green-400 border border-green-400/30">SQLite</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-muted border border-white/20">UI/UX</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Instant Search</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-green-400 border border-green-400/30">No Internet Needed</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-muted border border-white/20">Simple, Clean Design</span>
                     </div>
                 </div>
 
@@ -446,13 +444,13 @@
                     <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div class="flex items-start justify-between mb-6 relative z-10">
                         <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-display font-bold text-2xl shadow-lg">PA</div>
-                        <span class="text-[10px] font-mono text-purple-400 bg-purple-500/10 border border-purple-400/30 px-2 py-1 rounded-md">+ CMS Panel</span>
+                        <span class="text-[10px] font-mono text-purple-400 bg-purple-500/10 border border-purple-400/30 px-2 py-1 rounded-md">+ Publishing Panel</span>
                     </div>
                     <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-purple-400 transition-colors">Regional ePaper</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A regional news reader with native Bengali typography and offline caching — paired with a publishing panel where editors schedule stories and push breaking-news alerts themselves.</p>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A news app with proper Bengali typography and offline reading, paired with a publishing panel so editors can schedule stories and send breaking-news alerts themselves, no developer needed.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Dio API</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-neonGreen border border-neonGreen/30">Caching</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Fast Loading</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-neonGreen border border-neonGreen/30">Read Without Internet</span>
                     </div>
                 </div>
 
@@ -463,11 +461,11 @@
                         <span class="text-[10px] font-mono text-neonGreen bg-neonGreen/10 border border-neonGreen/30 px-2 py-1 rounded-md">+ Watchlist Console</span>
                     </div>
                     <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-neonGreen transition-colors">CryptoTracker FX</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A high-frequency market tracker streaming live candlesticks over WebSockets, plus an ops console for configuring tracked assets, alert thresholds, and API rate budgets.</p>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A crypto tracking app with live price charts that update in real time, plus a control panel for managing which coins are tracked, setting price alerts, and keeping an eye on usage.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Riverpod</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-purple-400 border border-purple-400/30">WebSockets</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Charts</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Live Price Updates</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-purple-400 border border-purple-400/30">Instant Alerts</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Easy-to-Read Charts</span>
                     </div>
                 </div>
 
@@ -478,10 +476,10 @@
                         <span class="text-[10px] font-mono text-blue-400 bg-blue-400/10 border border-blue-400/30 px-2 py-1 rounded-md">+ Admin Console</span>
                     </div>
                     <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-blue-400 transition-colors">SmartChat AI</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">An AI messaging app with a custom-animated chat surface, backed by an admin console for swapping prompts and models, capping usage, and reviewing flagged conversations.</p>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">An AI chat app with smooth, custom animations, backed by an admin panel for switching AI models, setting usage limits, and reviewing flagged conversations.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Gemini API</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-purple-400 border border-purple-400/30">Firebase Auth</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Smart AI Responses</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-purple-400 border border-purple-400/30">Secure Login</span>
                     </div>
                 </div>
 
@@ -492,11 +490,11 @@
                         <span class="text-[10px] font-mono text-pink-400 bg-pink-500/10 border border-pink-400/30 px-2 py-1 rounded-md">+ Instructor Dashboard</span>
                     </div>
                     <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-pink-400 transition-colors">EduLearn Platform</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A course app with offline downloads and a custom video player, matched with an instructor dashboard for uploading lessons, grading, and tracking every student's progress.</p>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A course app with downloadable lessons and a custom video player, matched with an instructor dashboard for uploading content, grading assignments, and tracking every student's progress.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Riverpod</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-neonGreen border border-neonGreen/30">Video/Media</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Isolates</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Downloadable Lessons</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-neonGreen border border-neonGreen/30">Built-In Video Player</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Runs Smoothly</span>
                     </div>
                 </div>
 
@@ -507,10 +505,10 @@
                         <span class="text-[10px] font-mono text-orange-400 bg-orange-500/10 border border-orange-400/30 px-2 py-1 rounded-md">+ Fleet Control Map</span>
                     </div>
                     <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-orange-400 transition-colors">FleetOps Tracker</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A driver-facing delivery app streaming GPS pings, mirrored on a live fleet dashboard with geofencing, route replay, and dispatch tools for the ops team back at the office.</p>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A delivery app for drivers that shares live location, mirrored on a fleet dashboard back at the office with geofencing, route playback, and dispatch tools for the ops team.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Google Maps SDK</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-purple-400 border border-purple-400/30">WebSockets</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Live Location Tracking</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-purple-400 border border-purple-400/30">Real-Time Updates</span>
                     </div>
                 </div>
 
@@ -521,10 +519,10 @@
                         <span class="text-[10px] font-mono text-cyan-400 bg-cyan-400/10 border border-cyan-400/30 px-2 py-1 rounded-md">+ Front-Desk Panel</span>
                     </div>
                     <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-cyan-400 transition-colors">ClinicQueue</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A patient app for booking appointments and checking queue position, paired with a front-desk panel where staff manage schedules, reassign slots, and message patients in real time.</p>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A patient app for booking appointments and checking their place in line, paired with a front-desk panel where staff manage schedules, move appointments around, and message patients directly.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Firestore</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Push Notifications</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Instant Updates</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Automatic Reminders</span>
                     </div>
                 </div>
 
@@ -535,10 +533,10 @@
                         <span class="text-[10px] font-mono text-lime-400 bg-lime-400/10 border border-lime-400/30 px-2 py-1 rounded-md">+ Owner Dashboard</span>
                     </div>
                     <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-lime-400 transition-colors">RetailPulse POS</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A tablet point-of-sale app for checkout staff, wired to an owner's dashboard showing daily sales, low-stock alerts, and staff performance across every branch.</p>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A tablet checkout app for store staff, connected to an owner's dashboard that shows daily sales, low-stock warnings, and staff performance across every branch.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Riverpod</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-green-400 border border-green-400/30">Inventory Sync</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Easy Checkout</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-green-400 border border-green-400/30">Automatic Stock Updates</span>
                     </div>
                 </div>
 
@@ -550,8 +548,8 @@
         <div class="max-w-4xl mx-auto text-center reveal glass-card p-12 rounded-3xl relative overflow-hidden border border-accent/20">
             <div class="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-[50px] -translate-y-1/2 translate-x-1/3"></div>
             
-            <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 text-white relative z-10">Ready to Compile?</h2>
-            <p class="text-muted mb-10 text-lg relative z-10">Whether it's a new app and its admin dashboard from scratch, a debugging pass on a release build, or bolting a control panel onto something that already exists — I'm ready to push code.</p>
+            <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 text-white relative z-10">Got a Project in Mind?</h2>
+            <p class="text-muted mb-10 text-lg relative z-10">Whether you need a brand new app with its own dashboard, help fixing something that's already live, or a control panel added to an app you already have, I'd love to help. Send a message and let's talk about what you need.</p>
             
             <div class="flex flex-wrap justify-center gap-4 md:gap-6 relative z-10">
                 <a href="mailto:iktiarnazib@gmail.com" class="px-8 py-4 rounded-xl bg-accent text-navy font-bold hover:bg-white transition-all shadow-[0_0_20px_rgba(76,141,255,0.3)]">
@@ -573,7 +571,7 @@
                 <a href="https://www.upwork.com/freelancers/~01d1e6e01650df66dd" target="_blank" class="hover:text-upwork transition-colors">UPWORK</a>
             </div>
             <div class="text-sm text-muted/40 font-mono">
-                &copy; 2026 Iktiar. Built with structural Flutter concepts, rendered in HTML/CSS.
+                &copy; 2026 Iktiar
             </div>
         </div>
     </section>
