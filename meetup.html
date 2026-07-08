@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meetup: Social Events | Project Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#0B1220',
+                        surface: '#121A2B',
+                        accent: '#4C8DFF',
+                        amber: '#FFB86B',
+                        neonGreen: '#00FF9D',
+                        muted: '#8CA2C4',
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 8s ease-in-out infinite 3s',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 0.4, transform: 'scale(1)' },
+                            '50%': { opacity: 0.8, transform: 'scale(1.05)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B1220;
+            color: #EAF0FF;
+            overflow-x: hidden;
+        }
+
+        .bg-grid {
+            background-image: 
+                radial-gradient(rgba(76, 141, 255, 0.15) 1px, transparent 1px),
+                radial-gradient(rgba(76, 141, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .glass-card {
+            background: rgba(18, 26, 43, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(76, 141, 255, 0.15);
+        }
+
+        .glow-blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(80px);
+            opacity: 0.6;
+        }
+        
+        .img-container img {
+            transition: all 0.4s ease;
+        }
+        .img-container img:hover {
+            transform: scale(1.015);
+            box-shadow: 0 25px 50px -12px rgba(168, 85, 247, 0.2);
+            border-color: rgba(168, 85, 247, 0.4);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-accent selection:text-white relative">
+
+    <div class="bg-grid"></div>
+    <div class="glow-blob top-[10%] left-[-10%] bg-purple-500/20 animate-pulse-glow"></div>
+    <div class="glow-blob bottom-[30%] right-[-10%] bg-accent/15 animate-float-delayed"></div>
+
+    <div class="fixed top-0 w-full z-50">
+        <nav class="w-full glass-card rounded-none border-t-0 border-l-0 border-r-0 border-b border-white/10 py-4 px-6 md:px-12 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 text-accent hover:text-white transition-colors font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Back to Portfolio
+            </a>
+            <div class="font-display font-bold text-xl tracking-tight text-white flex items-center gap-2">
+                <span class="text-accent">&lt;</span>Iktiar<span class="text-accent">/&gt;</span>
+            </div>
+        </nav>
+    </div>
+
+    <main class="pt-32 pb-24 px-6 max-w-5xl mx-auto z-10 relative">
+        
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center justify-center mb-6">
+                <img src="./Meetup/meetup.png" alt="Meetup Logo" class="w-20 h-20 rounded-3xl shadow-[0_0_30px_rgba(168,85,247,0.25)] object-cover border border-white/10">
+            </div>
+            <h1 class="font-display text-4xl md:text-5xl font-bold mb-4 text-white">Meetup: Social Events & Groups</h1>
+            <p class="text-purple-400 font-mono text-sm tracking-wide mb-6">PROUD CO-DEVELOPER • 60M+ MEMBERS GLOBALLY</p>
+            
+            <p class="text-base text-muted max-w-3xl mx-auto leading-relaxed mb-8">
+                I collaborated with the Meetup team to develop and launch this robust networking platform. With over 60 million active members, the application helps users build career networks, discover tech communities, build personal brands, and meet friends sharing similar interests across 100,000+ local and online events happening every week.
+            </p>
+
+            <a href="https://play.google.com/store/apps/details?id=com.meetup&pcampaignid=web_share" target="_blank" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-purple-500 text-white font-bold hover:bg-white hover:text-purple-600 hover:scale-105 transition-all shadow-[0_0_25px_rgba(168,85,247,0.35)]">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M5,3l12.1,8.3c0.5,0.4,0.5,1,0,1.4L5,21c-0.6,0.4-1.4,0-1.4-0.7V3.7C3.6,3,4.4,2.6,5,3z M15.7,12l4.4-3c0.4-0.3,0.4-0.9,0-1.2l-4.4-3L12,9.3L15.7,12z"/></svg>
+                View on Google Play Store
+            </a>
+        </div>
+
+        <div class="glass-card rounded-2xl p-8 mb-16 border border-white/10">
+            <h2 class="font-display text-2xl font-bold text-white mb-6 flex items-center gap-2">
+                <span class="text-purple-400">■</span> Architecture & Core Offerings
+            </h2>
+            <p class="text-muted mb-6 leading-relaxed">
+                The application allows individuals to pursue interests with people who share them, effortlessly navigating thousands of groups and events both online and in-person:
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm mb-8">
+                <div class="space-y-2">
+                    <p class="text-white font-medium">❖ Discover Local & Online Events</p>
+                    <p class="text-muted pl-4 leading-relaxed">Explore by category, keyword, or map to see what's popular in your area. Users get matched with over 330,000 groups ranging from tech conferences to free local yoga sessions.</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-white font-medium">❖ Community Networking</p>
+                    <p class="text-muted pl-4 leading-relaxed">Engage in dynamic discussions and use direct instant messaging to stay in touch with new friends, expanding your global and local networks simultaneously.</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-white font-medium">❖ Group Hosting & Management</p>
+                    <p class="text-muted pl-4 leading-relaxed">Host your own events online and in person. Easily personalize and schedule events on-the-go, manage your group from anywhere, and keep momentum going by sharing photos.</p>
+                </div>
+                <div class="space-y-2">
+                    <p class="text-white font-medium">❖ Smart Matching Engine</p>
+                    <p class="text-muted pl-4 leading-relaxed">Utilizes precise device location (GPS and network-based) and machine learning to recommend hosted events and potential new friends based on your personal network of interests.</p>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-6 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center text-xs font-mono">
+                <div class="bg-navy/40 p-4 rounded-xl border border-white/5">
+                    <p class="text-purple-400 font-bold text-lg mb-1">CONNECTED</p>
+                    <p class="text-muted">Over 60M Global Members</p>
+                </div>
+                <div class="bg-navy/40 p-4 rounded-xl border border-white/5">
+                    <p class="text-accent font-bold text-lg mb-1">SCALABLE</p>
+                    <p class="text-muted">100,000+ Weekly Events</p>
+                </div>
+                <div class="bg-navy/40 p-4 rounded-xl border border-white/5">
+                    <p class="text-neonGreen font-bold text-lg mb-1">PRECISE</p>
+                    <p class="text-muted">GPS-Driven Local Matching</p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="font-display text-2xl font-bold text-white mb-8 text-center">Platform Gallery</h2>
+        <div class="img-container flex flex-col gap-8">
+            <img src="./Meetup/meetup playstore.png" alt="Meetup App Banner" class="w-full rounded-2xl border border-white/10 object-cover" onerror="this.style.display='none'">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <img src="./Meetup/meetup-picture-1.webp" alt="Meetup Screen 1" class="w-full h-auto rounded-2xl border border-white/10 object-contain mx-auto" onerror="this.style.display='none'">
+                <img src="./Meetup/meetup-picture-2.webp" alt="Meetup Screen 2" class="w-full h-auto rounded-2xl border border-white/10 object-contain mx-auto" onerror="this.style.display='none'">
+                <img src="./Meetup/meetup-picture-3.webp" alt="Meetup Screen 3" class="w-full h-auto rounded-2xl border border-white/10 object-contain mx-auto" onerror="this.style.display='none'">
+                <img src="./Meetup/meetup-picture-4.webp" alt="Meetup Screen 4" class="w-full h-auto rounded-2xl border border-white/10 object-contain mx-auto" onerror="this.style.display='none'">
+                <img src="./Meetup/meetup-picture-5.webp" alt="Meetup Screen 5" class="w-full h-auto rounded-2xl border border-white/10 object-contain mx-auto" onerror="this.style.display='none'">
+                <img src="./Meetup/meetup-picture-6.webp" alt="Meetup Screen 6" class="w-full h-auto rounded-2xl border border-white/10 object-contain mx-auto" onerror="this.style.display='none'">
+                <img src="./Meetup/meetup-picture-7.webp" alt="Meetup Screen 7" class="w-full h-auto rounded-2xl border border-white/10 object-contain mx-auto" onerror="this.style.display='none'">
+            </div>
+        </div>
+
+        <div class="mt-16 text-center text-sm font-mono text-muted/40">
+            &copy; 2026 Iktiar • Meetup Mobile Environment
+        </div>
+    </main>
+</body>
+</html>
