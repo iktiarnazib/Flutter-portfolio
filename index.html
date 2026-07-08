@@ -119,6 +119,13 @@
         .check-str { color: #00FF9D; }
         .check-comment { color: #697098; font-style: italic; }
 
+        /* Floating wrappers: animation lives on its own group with no
+           competing transform attribute, so it can never clobber the
+           static translate() that positions the badge/phone/dashboard. */
+        .float-anchor {
+            transform-box: fill-box;
+        }
+
         #phoneGroup, #dashboardGroup, #appStoreBadge, #playStoreBadge {
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s ease;
             transform-box: fill-box;
@@ -132,6 +139,13 @@
         #appStoreBadge:hover, #playStoreBadge:hover {
             transform: scale(1.08) translateY(-4px);
             filter: drop-shadow(0 8px 18px rgba(0, 255, 157, 0.3));
+        }
+
+        /* Small pulsing dots need a centered transform-origin or the
+           scale keyframe makes them visibly drift on every beat. */
+        .pulse-dot {
+            transform-box: fill-box;
+            transform-origin: center;
         }
     </style>
 </head>
@@ -251,7 +265,8 @@
                     <circle cx="330" cy="105" r="4" fill="#00FF9D"/>
 
                     <!-- App Store badge -->
-                    <g transform="translate(20,16)" class="animate-float">
+                    <g class="animate-float float-anchor">
+                    <g transform="translate(20,16)">
                     <g id="appStoreBadge">
                         <rect x="0" y="0" width="176" height="52" rx="12" fill="#121A2B" stroke="#4C8DFF" stroke-opacity="0.4" stroke-width="1.5"/>
                         <rect x="8" y="8" width="36" height="36" rx="10" fill="#0F172A" stroke="#4C8DFF" stroke-opacity="0.5"/>
@@ -260,15 +275,18 @@
                         <text x="54" y="37" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#EAF0FF">App Store</text>
                     </g>
                     </g>
+                    </g>
 
                     <!-- Google Play badge -->
-                    <g transform="translate(20,76)" class="animate-float-delayed">
+                    <g class="animate-float-delayed float-anchor">
+                    <g transform="translate(20,76)">
                     <g id="playStoreBadge">
                         <rect x="0" y="0" width="176" height="52" rx="12" fill="#121A2B" stroke="#00FF9D" stroke-opacity="0.4" stroke-width="1.5"/>
                         <rect x="8" y="8" width="36" height="36" rx="10" fill="#0F172A" stroke="#00FF9D" stroke-opacity="0.5"/>
                         <polygon points="21,16 21,36 37,26" fill="url(#playGrad)"/>
                         <text x="54" y="21" font-family="JetBrains Mono, monospace" font-size="8" fill="#8CA2C4">GET IT ON</text>
                         <text x="54" y="37" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#EAF0FF">Google Play</text>
+                    </g>
                     </g>
                     </g>
 
@@ -279,14 +297,15 @@
                     </g>
 
                     <!-- Dashboard monitor (the control panel) -->
-                    <g transform="translate(330,90)" class="animate-float-delayed">
+                    <g class="animate-float-delayed float-anchor">
+                    <g transform="translate(330,90)">
                     <g id="dashboardGroup">
                         <rect x="0" y="0" width="280" height="190" rx="14" fill="#121A2B" stroke="url(#dashGrad)" stroke-width="1.5" opacity="0.96"/>
                         <rect x="16" y="18" width="248" height="26" rx="6" fill="#0F172A" stroke="#FFB86B" stroke-opacity="0.3"/>
                         <circle cx="28" cy="31" r="4" fill="#FF6B6B"/>
                         <circle cx="42" cy="31" r="4" fill="#FFB86B"/>
                         <circle cx="56" cy="31" r="4" fill="#00FF9D"/>
-                        <circle cx="222" cy="31" r="3.5" fill="#00FF9D" class="animate-pulse-glow"/>
+                        <circle cx="222" cy="31" r="3.5" fill="#00FF9D" class="animate-pulse-glow pulse-dot"/>
                         <text x="235" y="35" font-family="JetBrains Mono, monospace" font-size="9" fill="#00FF9D">LIVE</text>
                         <text x="140" y="35" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#8CA2C4">your.dashboard</text>
 
@@ -303,13 +322,15 @@
                         <text x="26" y="132" font-family="JetBrains Mono, monospace" font-size="9" fill="#8CA2C4">LIVE ANALYTICS</text>
                     </g>
                     </g>
+                    </g>
 
                     <!-- Phone mockup (the app) -->
-                    <g transform="translate(70,240)" class="animate-float">
+                    <g class="animate-float float-anchor">
+                    <g transform="translate(70,240)">
                     <g id="phoneGroup">
                         <rect x="0" y="0" width="150" height="290" rx="24" fill="#0B1220" stroke="url(#phoneGrad)" stroke-width="2.5"/>
                         <rect x="8" y="14" width="134" height="262" rx="14" fill="#121A2B"/>
-                        <circle cx="140" cy="10" r="9" fill="#FF6B6B" class="animate-pulse-glow"/>
+                        <circle cx="140" cy="10" r="9" fill="#FF6B6B" class="animate-pulse-glow pulse-dot"/>
                         <text x="140" y="13" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="9" font-weight="700" fill="#0B1220">3</text>
                         <rect x="20" y="28" width="70" height="10" rx="5" fill="#4C8DFF" opacity="0.8"/>
                         <rect x="20" y="50" width="110" height="56" rx="10" fill="#0F172A" stroke="#4C8DFF" stroke-opacity="0.3"/>
@@ -335,8 +356,7 @@
                         <rect x="45" y="270" width="60" height="7" rx="3.5" fill="#4C8DFF" opacity="0.5"/>
                     </g>
                     </g>
-
-                    <text x="330" y="330" font-family="JetBrains Mono, monospace" font-size="11" fill="#00FF9D" opacity="0.8">// live on both stores, synced with your dashboard</text>
+                    </g>
                 </svg>
             </div>
         </div>
