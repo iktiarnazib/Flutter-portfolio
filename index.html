@@ -144,14 +144,12 @@
         <div class="absolute top-1/4 left-1/4 w-12 h-12 rounded-xl border border-accent/30 rotate-45 animate-float opacity-50 z-0"></div>
         <div class="absolute bottom-1/4 right-1/4 w-16 h-16 rounded-full border border-amber/30 animate-float-delayed opacity-50 z-0"></div>
 
-        <div class="max-w-4xl mx-auto text-center z-10 reveal">
+        <div class="max-w-4xl mx-auto text-center z-10 reveal active">
             
             <div class="relative w-40 h-40 mx-auto mb-10">
                 <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-accent via-purple-500 to-amber animate-spin-slow blur-[2px]" style="padding: 3px;"></div>
                 <div class="relative w-full h-full rounded-full bg-navy border-4 border-navy overflow-hidden z-10 flex items-center justify-center shadow-[0_0_30px_rgba(76,141,255,0.4)]">
-                    
-                    <img src="profile.png" alt="Iktiar Profile" class="w-full h-full object-cover">
-                
+                    <img src="./profile.png" alt="Iktiar Profile" class="w-full h-full object-cover block" onerror="this.src='profile.png'">
                 </div>
             </div>
 
@@ -173,7 +171,7 @@
             </p>
             <div class="flex flex-col sm:flex-row gap-5 justify-center">
                 <a href="#work" class="px-8 py-3.5 rounded-xl bg-accent text-navy font-bold hover:bg-white hover:scale-105 transition-all shadow-[0_0_20px_rgba(76,141,255,0.4)]">Explore Projects</a>
-                <a href="#contact" class="px-8 py-3.5 rounded-xl glass-card font-bold text-white hover:border-amber transition-all flex items-center justify-center gap-2">
+                <a href="#skills" class="px-8 py-3.5 rounded-xl glass-card font-bold text-white hover:border-amber transition-all flex items-center justify-center gap-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
                     View Stack
                 </a>
@@ -379,8 +377,6 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
-                        // Optional: stop observing once revealed
-                        // observer.unobserve(entry.target); 
                     }
                 });
             }, {
