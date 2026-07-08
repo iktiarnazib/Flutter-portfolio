@@ -118,6 +118,21 @@
         .check-val { color: #A6ACCD; }
         .check-str { color: #00FF9D; }
         .check-comment { color: #697098; font-style: italic; }
+
+        #phoneGroup, #dashboardGroup, #appStoreBadge, #playStoreBadge {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s ease;
+            transform-box: fill-box;
+            transform-origin: center;
+            cursor: pointer;
+        }
+        #phoneGroup:hover, #dashboardGroup:hover {
+            transform: scale(1.045);
+            filter: drop-shadow(0 10px 25px rgba(76, 141, 255, 0.35));
+        }
+        #appStoreBadge:hover, #playStoreBadge:hover {
+            transform: scale(1.08) translateY(-4px);
+            filter: drop-shadow(0 8px 18px rgba(0, 255, 157, 0.3));
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-accent selection:text-white relative">
@@ -209,9 +224,9 @@
                 </div>
             </div>
 
-            <div class="relative h-[420px] hidden lg:block">
-                <!-- Signature graphic: the app (phone) feeding a control dashboard, linked by a live data pulse -->
-                <svg viewBox="0 0 560 480" class="w-full h-full">
+            <div class="relative h-[560px] hidden lg:block">
+                <!-- Signature graphic: app stores publishing an app, feeding a live control dashboard -->
+                <svg viewBox="0 0 620 580" class="w-full h-full">
                     <defs>
                         <linearGradient id="phoneGrad" x1="0" y1="0" x2="1" y2="1">
                             <stop offset="0%" stop-color="#4C8DFF" stop-opacity="0.9"/>
@@ -221,50 +236,99 @@
                             <stop offset="0%" stop-color="#FFB86B"/>
                             <stop offset="100%" stop-color="#00FF9D"/>
                         </linearGradient>
+                        <linearGradient id="playGrad" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#00FF9D"/>
+                            <stop offset="100%" stop-color="#4C8DFF"/>
+                        </linearGradient>
                     </defs>
 
-                    <!-- connecting pulse line -->
-                    <path d="M 190 260 C 250 220, 260 200, 320 190" stroke="#4C8DFF" stroke-width="2" fill="none" stroke-dasharray="6 6" opacity="0.6"/>
-                    <circle cx="190" cy="260" r="4" fill="#00FF9D"/>
-                    <circle cx="320" cy="190" r="4" fill="#FFB86B"/>
+                    <!-- connecting pulse lines -->
+                    <path d="M 108 172 C 130 200, 150 210, 155 240" stroke="#4C8DFF" stroke-width="2" fill="none" stroke-dasharray="6 6" opacity="0.55"/>
+                    <path d="M 220 330 C 260 300, 280 260, 330 190" stroke="#4C8DFF" stroke-width="2" fill="none" stroke-dasharray="6 6" opacity="0.6"/>
+                    <path d="M 196 60 C 260 40, 300 60, 330 105" stroke="#00FF9D" stroke-width="2" fill="none" stroke-dasharray="6 6" opacity="0.4"/>
+                    <circle cx="108" cy="172" r="4" fill="#00FF9D"/>
+                    <circle cx="330" cy="190" r="4" fill="#FFB86B"/>
+                    <circle cx="330" cy="105" r="4" fill="#00FF9D"/>
 
-                    <!-- Dashboard monitor (the byproduct: control panel) -->
-                    <g transform="translate(255,40)" class="animate-float-delayed">
+                    <!-- App Store badge -->
+                    <g id="appStoreBadge" transform="translate(20,16)" class="animate-float">
+                        <rect x="0" y="0" width="176" height="52" rx="12" fill="#121A2B" stroke="#4C8DFF" stroke-opacity="0.4" stroke-width="1.5"/>
+                        <rect x="8" y="8" width="36" height="36" rx="10" fill="#0F172A" stroke="#4C8DFF" stroke-opacity="0.5"/>
+                        <path d="M 20 30 L 26 22 L 32 30 M 26 24 L 26 34" stroke="#4C8DFF" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <text x="54" y="21" font-family="JetBrains Mono, monospace" font-size="8" fill="#8CA2C4">DOWNLOAD ON THE</text>
+                        <text x="54" y="37" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#EAF0FF">App Store</text>
+                    </g>
+
+                    <!-- Google Play badge -->
+                    <g id="playStoreBadge" transform="translate(20,76)" class="animate-float-delayed">
+                        <rect x="0" y="0" width="176" height="52" rx="12" fill="#121A2B" stroke="#00FF9D" stroke-opacity="0.4" stroke-width="1.5"/>
+                        <rect x="8" y="8" width="36" height="36" rx="10" fill="#0F172A" stroke="#00FF9D" stroke-opacity="0.5"/>
+                        <polygon points="21,16 21,36 37,26" fill="url(#playGrad)"/>
+                        <text x="54" y="21" font-family="JetBrains Mono, monospace" font-size="8" fill="#8CA2C4">GET IT ON</text>
+                        <text x="54" y="37" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#EAF0FF">Google Play</text>
+                    </g>
+
+                    <!-- Rating chip -->
+                    <g transform="translate(20,138)">
+                        <rect x="0" y="0" width="176" height="30" rx="15" fill="#0F172A" stroke="#FFB86B" stroke-opacity="0.3"/>
+                        <text x="88" y="20" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#FFB86B">★★★★★ 4.9 &#8226; 50K+ downloads</text>
+                    </g>
+
+                    <!-- Dashboard monitor (the control panel) -->
+                    <g id="dashboardGroup" transform="translate(330,90)" class="animate-float-delayed">
                         <rect x="0" y="0" width="280" height="190" rx="14" fill="#121A2B" stroke="url(#dashGrad)" stroke-width="1.5" opacity="0.96"/>
                         <rect x="16" y="18" width="248" height="26" rx="6" fill="#0F172A" stroke="#FFB86B" stroke-opacity="0.3"/>
                         <circle cx="28" cy="31" r="4" fill="#FF6B6B"/>
                         <circle cx="42" cy="31" r="4" fill="#FFB86B"/>
                         <circle cx="56" cy="31" r="4" fill="#00FF9D"/>
-                        <text x="150" y="35" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#8CA2C4">your.dashboard</text>
+                        <circle cx="222" cy="31" r="3.5" fill="#00FF9D" class="animate-pulse-glow"/>
+                        <text x="235" y="35" font-family="JetBrains Mono, monospace" font-size="9" fill="#00FF9D">LIVE</text>
+                        <text x="140" y="35" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#8CA2C4">your.dashboard</text>
 
                         <rect x="16" y="56" width="118" height="52" rx="8" fill="#0F172A" stroke="#4C8DFF" stroke-opacity="0.35"/>
                         <text x="26" y="72" font-family="JetBrains Mono, monospace" font-size="9" fill="#8CA2C4">ACTIVE USERS</text>
-                        <text x="26" y="96" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="700" fill="#00FF9D">12,840</text>
+                        <text id="activeUsersCount" x="26" y="96" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="700" fill="#00FF9D">12,840</text>
 
                         <rect x="146" y="56" width="118" height="52" rx="8" fill="#0F172A" stroke="#FFB86B" stroke-opacity="0.35"/>
                         <text x="156" y="72" font-family="JetBrains Mono, monospace" font-size="9" fill="#8CA2C4">PUSH QUEUE</text>
-                        <text x="156" y="96" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="700" fill="#FFB86B">Sent ✓</text>
+                        <text id="pushStatusText" x="156" y="96" font-family="Space Grotesk, sans-serif" font-size="18" font-weight="700" fill="#FFB86B">Sent ✓</text>
 
                         <rect x="16" y="118" width="248" height="52" rx="8" fill="#0F172A" stroke="#8B5CF6" stroke-opacity="0.35"/>
-                        <polyline points="26,158 50,140 74,150 98,132 122,145 146,120 170,138 194,128 218,142 242,124" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+                        <polyline id="analyticsLine" points="26,158 50,140 74,150 98,132 122,145 146,120 170,138 194,128 218,142 242,124" fill="none" stroke="#8B5CF6" stroke-width="2"/>
                         <text x="26" y="132" font-family="JetBrains Mono, monospace" font-size="9" fill="#8CA2C4">LIVE ANALYTICS</text>
                     </g>
 
                     <!-- Phone mockup (the app) -->
-                    <g transform="translate(60,190)" class="animate-float">
-                        <rect x="0" y="0" width="150" height="270" rx="24" fill="#0B1220" stroke="url(#phoneGrad)" stroke-width="2.5"/>
-                        <rect x="8" y="14" width="134" height="242" rx="14" fill="#121A2B"/>
-                        <rect x="20" y="30" width="70" height="10" rx="5" fill="#4C8DFF" opacity="0.8"/>
-                        <rect x="20" y="52" width="110" height="60" rx="10" fill="#0F172A" stroke="#4C8DFF" stroke-opacity="0.3"/>
-                        <circle cx="45" cy="82" r="14" fill="#4C8DFF" opacity="0.6"/>
-                        <rect x="68" y="72" width="50" height="8" rx="4" fill="#8CA2C4"/>
-                        <rect x="68" y="88" width="35" height="6" rx="3" fill="#697098"/>
-                        <rect x="20" y="122" width="110" height="34" rx="8" fill="#0F172A" stroke="#00FF9D" stroke-opacity="0.3"/>
-                        <rect x="20" y="164" width="110" height="34" rx="8" fill="#0F172A" stroke="#FFB86B" stroke-opacity="0.3"/>
-                        <rect x="45" y="228" width="60" height="8" rx="4" fill="#4C8DFF" opacity="0.5"/>
+                    <g id="phoneGroup" transform="translate(70,240)" class="animate-float">
+                        <rect x="0" y="0" width="150" height="290" rx="24" fill="#0B1220" stroke="url(#phoneGrad)" stroke-width="2.5"/>
+                        <rect x="8" y="14" width="134" height="262" rx="14" fill="#121A2B"/>
+                        <circle cx="140" cy="10" r="9" fill="#FF6B6B" class="animate-pulse-glow"/>
+                        <text x="140" y="13" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="9" font-weight="700" fill="#0B1220">3</text>
+                        <rect x="20" y="28" width="70" height="10" rx="5" fill="#4C8DFF" opacity="0.8"/>
+                        <rect x="20" y="50" width="110" height="56" rx="10" fill="#0F172A" stroke="#4C8DFF" stroke-opacity="0.3"/>
+                        <circle cx="45" cy="78" r="13" fill="#4C8DFF" opacity="0.6"/>
+                        <rect x="66" y="68" width="50" height="8" rx="4" fill="#8CA2C4"/>
+                        <rect x="66" y="84" width="35" height="6" rx="3" fill="#697098"/>
+
+                        <!-- app icon grid -->
+                        <rect x="20" y="120" width="48" height="48" rx="12" fill="#4C8DFF" opacity="0.85"/>
+                        <rect x="34" y="134" width="20" height="20" rx="5" fill="#0B1220" opacity="0.5"/>
+                        <rect x="82" y="120" width="48" height="48" rx="12" fill="#FFB86B" opacity="0.85"/>
+                        <circle cx="106" cy="144" r="10" fill="#0B1220" opacity="0.5"/>
+                        <rect x="20" y="176" width="48" height="48" rx="12" fill="#8B5CF6" opacity="0.85"/>
+                        <polygon points="36,200 44,186 52,200" fill="#0B1220" opacity="0.5"/>
+                        <rect x="82" y="176" width="48" height="48" rx="12" fill="#00FF9D" opacity="0.85"/>
+                        <rect x="94" y="192" width="24" height="16" rx="4" fill="#0B1220" opacity="0.5"/>
+
+                        <rect x="20" y="236" width="110" height="26" rx="8" fill="#0F172A" stroke="#4C8DFF" stroke-opacity="0.25"/>
+                        <circle cx="38" cy="249" r="3.5" fill="#4C8DFF"/>
+                        <circle cx="63" cy="249" r="3.5" fill="#697098"/>
+                        <circle cx="88" cy="249" r="3.5" fill="#697098"/>
+                        <circle cx="113" cy="249" r="3.5" fill="#697098"/>
+                        <rect x="45" y="270" width="60" height="7" rx="3.5" fill="#4C8DFF" opacity="0.5"/>
                     </g>
 
-                    <text x="330" y="270" font-family="JetBrains Mono, monospace" font-size="11" fill="#00FF9D" opacity="0.8">// your app and dashboard, always in sync</text>
+                    <text x="330" y="330" font-family="JetBrains Mono, monospace" font-size="11" fill="#00FF9D" opacity="0.8">// live on both stores, synced with your dashboard</text>
                 </svg>
             </div>
         </div>
@@ -594,6 +658,40 @@
             reveals.forEach(reveal => {
                 revealOnScroll.observe(reveal);
             });
+
+            // Live-feeling hero dashboard: ticking user count, cycling push status, breathing chart
+            const activeUsersEl = document.getElementById('activeUsersCount');
+            const pushStatusEl = document.getElementById('pushStatusText');
+            const analyticsLine = document.getElementById('analyticsLine');
+
+            if (activeUsersEl) {
+                let count = 12840;
+                setInterval(() => {
+                    count += Math.floor(Math.random() * 14) - 4;
+                    activeUsersEl.textContent = count.toLocaleString();
+                }, 2000);
+            }
+
+            if (pushStatusEl) {
+                const states = ['Sent ✓', 'Sending…', 'Scheduled'];
+                let i = 0;
+                setInterval(() => {
+                    i = (i + 1) % states.length;
+                    pushStatusEl.textContent = states[i];
+                }, 2600);
+            }
+
+            if (analyticsLine) {
+                const basePoints = [26,158, 50,140, 74,150, 98,132, 122,145, 146,120, 170,138, 194,128, 218,142, 242,124];
+                setInterval(() => {
+                    const jittered = basePoints.map((v, idx) => idx % 2 === 1 ? v + (Math.random() * 6 - 3) : v);
+                    const pointsStr = [];
+                    for (let j = 0; j < jittered.length; j += 2) {
+                        pointsStr.push(jittered[j] + ',' + jittered[j + 1].toFixed(1));
+                    }
+                    analyticsLine.setAttribute('points', pointsStr.join(' '));
+                }, 1800);
+            }
         });
     </script>
 </body>
