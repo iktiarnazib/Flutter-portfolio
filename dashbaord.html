@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>puSocial Dashboard | Project Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: '#0B1220',
+                        surface: '#121A2B',
+                        accent: '#4C8DFF',
+                        amber: '#FFB86B',
+                        neonGreen: '#00FF9D',
+                        muted: '#8CA2C4',
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 8s ease-in-out infinite 3s',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: 0.4, transform: 'scale(1)' },
+                            '50%': { opacity: 0.8, transform: 'scale(1.05)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B1220;
+            color: #EAF0FF;
+            overflow-x: hidden;
+        }
+
+        .bg-grid {
+            background-image: 
+                radial-gradient(rgba(76, 141, 255, 0.15) 1px, transparent 1px),
+                radial-gradient(rgba(76, 141, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .glass-card {
+            background: rgba(18, 26, 43, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(76, 141, 255, 0.15);
+        }
+
+        .glow-blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(80px);
+            opacity: 0.6;
+        }
+        
+        .img-container img {
+            transition: all 0.4s ease;
+        }
+        .img-container img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 40px -10px rgba(76, 141, 255, 0.25);
+            border-color: rgba(76, 141, 255, 0.4);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-accent selection:text-white relative">
+
+    <div class="bg-grid"></div>
+    <div class="glow-blob top-[10%] right-[-10%] bg-accent animate-pulse-glow"></div>
+    <div class="glow-blob bottom-[40%] left-[-10%] bg-purple-600/40 animate-float-delayed"></div>
+
+    <div class="fixed top-0 w-full z-50">
+        <nav class="w-full glass-card rounded-none border-t-0 border-l-0 border-r-0 border-b border-white/10 py-4 px-6 md:px-12 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2 text-accent hover:text-white transition-colors font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Back to Portfolio
+            </a>
+            <div class="font-display font-bold text-xl tracking-tight text-white flex items-center gap-2">
+                <span class="text-accent">&lt;</span>Iktiar<span class="text-accent">/&gt;</span>
+            </div>
+        </nav>
+    </div>
+
+    <main class="pt-32 pb-24 px-6 max-w-5xl mx-auto z-10 relative">
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center justify-center mb-6">
+                <img src="./Dashbaord/Dashbaord Logo.png" alt="Dashboard Logo" class="w-20 h-20 rounded-3xl shadow-[0_0_30px_rgba(76,141,255,0.3)] object-cover border border-white/10">
+            </div>
+            <h1 class="font-display text-4xl md:text-5xl font-bold mb-6 text-white">puSocial Admin Dashboard</h1>
+            <p class="text-lg text-muted max-w-3xl mx-auto leading-relaxed">
+                This project was created to provide total control over the main puSocial social media app. It serves as a secure, centralized hub requiring admin login. Once authenticated, administrators can oversee everything happening in the mobile app: from monitoring live user messages, commenting, and posting activities, to handling user reports and actively blocking or banning malicious accounts. It also allows admins to instantly push out official global announcements and manage website page links.
+            </p>
+            <div class="flex flex-wrap justify-center gap-3 mt-8">
+                <span class="text-xs font-mono bg-navy/80 px-3 py-1.5 rounded-lg text-accent border border-accent/30">User Management</span>
+                <span class="text-xs font-mono bg-navy/80 px-3 py-1.5 rounded-lg text-purple-400 border border-purple-400/30">Moderation</span>
+                <span class="text-xs font-mono bg-navy/80 px-3 py-1.5 rounded-lg text-amber border border-amber/30">Announcements</span>
+                <span class="text-xs font-mono bg-navy/80 px-3 py-1.5 rounded-lg text-neonGreen border border-neonGreen/30">Live Sync</span>
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-12 mt-16 img-container">
+            <img src="./Dashbaord/1.jpg" alt="Dashboard View 1" class="w-full rounded-xl border border-white/10 shadow-2xl" onerror="this.style.display='none'">
+            <img src="./Dashbaord/2.jpg" alt="Dashboard View 2" class="w-full rounded-xl border border-white/10 shadow-2xl" onerror="this.style.display='none'">
+            <img src="./Dashbaord/3.jpg" alt="Dashboard View 3" class="w-full rounded-xl border border-white/10 shadow-2xl" onerror="this.style.display='none'">
+            <img src="./Dashbaord/4.jpg" alt="Dashboard View 4" class="w-full rounded-xl border border-white/10 shadow-2xl" onerror="this.style.display='none'">
+            <img src="./Dashbaord/5.jpg" alt="Dashboard View 5" class="w-full rounded-xl border border-white/10 shadow-2xl" onerror="this.style.display='none'">
+            <img src="./Dashbaord/6.jpg" alt="Dashboard View 6" class="w-full rounded-xl border border-white/10 shadow-2xl" onerror="this.style.display='none'">
+            <img src="./Dashbaord/7.jpg" alt="Dashboard View 7" class="w-full rounded-xl border border-white/10 shadow-2xl" onerror="this.style.display='none'">
+        </div>
+        
+        <div class="mt-20 text-center flex flex-col items-center gap-4">
+            <div class="text-sm text-muted/40 font-mono">
+                &copy; 2026 Iktiar
+            </div>
+        </div>
+    </main>
+</body>
+</html>
