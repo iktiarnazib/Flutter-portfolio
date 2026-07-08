@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iktiar | App Development</title>
+    <title>Iktiar | Custom Apps With a Built-In Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <script>
@@ -119,9 +119,6 @@
         .check-str { color: #00FF9D; }
         .check-comment { color: #697098; font-style: italic; }
 
-        /* Floating wrappers: animation lives on its own group with no
-           competing transform attribute, so it can never clobber the
-           static translate() that positions the badge/phone/dashboard. */
         .float-anchor {
             transform-box: fill-box;
         }
@@ -141,8 +138,6 @@
             filter: drop-shadow(0 8px 18px rgba(0, 255, 157, 0.3));
         }
 
-        /* Small pulsing dots need a centered transform-origin or the
-           scale keyframe makes them visibly drift on every beat. */
         .pulse-dot {
             transform-box: fill-box;
             transform-origin: center;
@@ -169,7 +164,7 @@
                 Upwork
             </a>
             <a href="https://www.fiverr.com/s/pdD54PG" target="_blank" class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-fiverr/15 hover:bg-fiverr/25 border border-fiverr/50 text-xs font-bold text-white transition-all duration-300 hover:scale-105">
-                <svg class="w-3.5 h-3.5 text-fiverr" fill="currentColor" viewBox="0 0 24 24"><path d="M23.004 12.442c-.163.063-.63.198-1.212.198-1.362 0-2.15-.798-2.15-2.176v-.038h2.71v-1.16h-2.71v-.874c0-1.014.462-1.51 1.363-1.51.55 0 1.062.135 1.062.135l.276-1.235s-.517-.194-1.494-.194c-1.71 0-2.71.98-2.71 2.71v.968h-1.246v1.16h1.246v5.756h2.203v-5.756h2.212l.55-1.16v.176zm-14.13-.036c-.512 0-.874-.362-.874-.874s.362-.875.874-.875.875.363.875.875-.363.874-.875.874zm1.101 5.966H7.867v-6.916h2.108v6.916zm-6.5-6.916l1.612 4.484 1.61-4.484h2.212l-2.717 6.916H6.076l-2.71-6.916h2.109zm18.11-.106a2.02 2.02 0 0 0-1.76 1.023v-.917h-1.986v6.916h2.108v-3.71c0-.917.55-1.51 1.4-1.51.25 0 .462.036.462.036v-1.802s-.106-.036-.224-.036z"/></svg>
+                <svg class="w-3.5 h-3.5 text-fiverr" fill="currentColor" viewBox="0 0 24 24"><path d="M23.004 12.442c-.163.063-.63.198-1.212.198-1.362 0-2.15-.798-2.15-2.176v-.038h2.71v-1.16h-2.71v-.874c0-1.014.462-1.51 1.363-1.51.55 0 1.062.135 1.062.135l.276-1.235s-.517-.194-1.494-.194c-1.71 0-2.71.98-2.71 2.71v.968h-1.246v1.16h1.246v5.756h2.203v-5.756h2.212l.55-1.16v.176zm-14.13-.036c-.512 0-.874-.362-.874-.874s.362-.875.874-.875.875.363.875-.875-.363.874-.875.874zm1.101 5.966H7.867v-6.916h2.108v6.916zm-6.5-6.916l1.612 4.484 1.61-4.484h2.212l-2.717 6.916H6.076l-2.71-6.916h2.109zm18.11-.106a2.02 2.02 0 0 0-1.76 1.023v-.917h-1.986v6.916h2.108v-3.71c0-.917.55-1.51 1.4-1.51.25 0 .462.036.462.036v-1.802s-.106-.036-.224-.036z"/></svg>
                 Fiverr
             </a>
         </div>
@@ -493,20 +488,20 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <div class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden">
+                <a href="dashboard.html" class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden block text-left">
                     <div class="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <div class="flex items-start justify-between mb-6 relative z-10">
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#2E5BFF] to-accent flex items-center justify-center text-white font-display font-bold text-2xl shadow-lg">pS</div>
-                        <span class="text-[10px] font-mono text-accent bg-accent/10 border border-accent/30 px-2 py-1 rounded-md">+ Moderation Dashboard</span>
+                        <img src="./Dashbaord/Dashbaord Logo.png" alt="Dashboard Logo" class="w-14 h-14 rounded-2xl shadow-lg object-cover border border-white/10" onerror="this.style.display='none'">
+                        <span class="text-[10px] font-mono text-accent bg-accent/10 border border-accent/30 px-2 py-1 rounded-md">Admin Panel</span>
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-accent transition-colors">puSocials</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A social app for a growing community. Alongside it, the team got a moderation dashboard so they can review reports, ban accounts, and check engagement numbers instantly, without needing an app update to act.</p>
+                    <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-accent transition-colors">puSocial Dashboard</h3>
+                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A central control dashboard for the puSocial social media app. Manage the entire platform securely: monitor messages, handle reports, block/ban users, and broadcast global announcements to the main app.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Works on iPhone & Android</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-purple-400 border border-purple-400/30">Live Data Updates</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Ready to Launch</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">User Management</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-purple-400 border border-purple-400/30">Live Moderation</span>
+                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Secure Login</span>
                     </div>
-                </div>
+                </a>
 
                 <div class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden" style="transition-delay: 100ms;">
                     <div class="absolute inset-0 bg-gradient-to-br from-amber/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -678,7 +673,6 @@
                 revealOnScroll.observe(reveal);
             });
 
-            // Live-feeling hero dashboard: ticking user count, cycling push status, breathing chart
             const activeUsersEl = document.getElementById('activeUsersCount');
             const pushStatusEl = document.getElementById('pushStatusText');
             const analyticsLine = document.getElementById('analyticsLine');
