@@ -184,53 +184,54 @@
         </nav>
     </div>
 
-    <section id="about" class="min-h-screen flex items-center justify-center pt-28 pb-12 px-6 relative overflow-hidden">
+    <section id="about" class="min-h-[calc(100vh-96px)] flex flex-col justify-center pt-24 pb-8 px-6 relative overflow-hidden">
         
         <div class="absolute top-16 left-10 w-10 h-10 rounded-xl border border-accent/20 rotate-45 animate-float opacity-30 z-0"></div>
         <div class="absolute bottom-16 right-10 w-12 h-12 rounded-full border border-amber/20 animate-float-delayed opacity-30 z-0"></div>
 
-        <div class="max-w-7xl mx-auto z-10 reveal active grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center">
+        <div class="max-w-7xl mx-auto w-full z-10 reveal active grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-12 items-center">
 
             <div class="text-center lg:text-left">
-                <div class="relative w-20 h-20 mx-auto lg:mx-0 mb-6">
+                <div class="relative w-16 h-16 mx-auto lg:mx-0 mb-4">
                     <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-accent via-purple-500 to-amber animate-spin-slow blur-[2px]" style="padding: 3px;"></div>
                     <div class="relative w-full h-full rounded-full bg-navy border-4 border-navy overflow-hidden z-10 flex items-center justify-center shadow-[0_0_30px_rgba(76,141,255,0.4)]">
                         <img src="./profile.png" alt="Iktiar Profile" class="w-full h-full object-cover block" onerror="this.src='profile.png'">
                     </div>
                 </div>
 
-                <div class="inline-block px-3 py-1 rounded text-xs font-mono text-neonGreen bg-neonGreen/10 mb-4 border border-neonGreen/20">From App idea to App launch. Everything handled, from design to deployment.</div>
+                <div class="inline-block px-3 py-1 rounded text-[10px] sm:text-xs font-mono text-neonGreen bg-neonGreen/10 mb-3 border border-neonGreen/20">From App idea to App launch. Everything handled, from design to deployment.</div>
 
-                <h1 class="font-display text-4xl md:text-5xl font-bold leading-tight mb-4 text-white">
+                <h1 class="font-display text-3xl md:text-4xl lg:text-[2.5rem] xl:text-5xl font-bold leading-tight mb-3 text-white">
                     Everything you need to launch<br>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#2E5BFF] to-purple-500">and manage your mobile app.</span>
                 </h1>
-                <p class="text-base md:text-lg text-muted max-w-xl mx-auto lg:mx-0 mb-6 leading-relaxed font-light">
+                
+                <p class="text-sm md:text-base text-muted max-w-xl mx-auto lg:mx-0 mb-5 leading-relaxed font-light">
                     Get a custom iOS & Android app with a powerful admin dashboard, so you can manage your business without relying on a developer for every update.<br><br>Built with proven experience, including Konga Online Marketplace and Meetup: Social Events & Groups, each with over 1 million Google Play downloads.<br><br>Launch confidently. Manage effortlessly.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-6">
-                    <a href="#work" class="px-6 py-3 rounded-xl bg-accent text-navy font-bold hover:bg-white hover:scale-105 transition-all shadow-[0_0_20px_rgba(76,141,255,0.4)]">View My Work</a>
-                    <a href="#byproduct" class="px-6 py-3 rounded-xl glass-card font-bold text-white hover:border-amber transition-all flex items-center justify-center gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m4 10V11m4 6V9M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                
+                <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-4">
+                    <a href="#work" class="px-5 py-2.5 rounded-xl text-sm bg-accent text-navy font-bold hover:bg-white hover:scale-105 transition-all shadow-[0_0_20px_rgba(76,141,255,0.4)]">View My Work</a>
+                    <a href="#byproduct" class="px-5 py-2.5 rounded-xl text-sm glass-card font-bold text-white hover:border-amber transition-all flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m4 10V11m4 6V9M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
                         See What's Included
                     </a>
                 </div>
 
-                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-                    <a href="https://www.upwork.com/freelancers/~01d1e6e01650df66dd" target="_blank" class="px-6 py-3 rounded-xl bg-upwork text-white font-bold hover:bg-white hover:text-upwork transition-all duration-300 shadow-[0_0_20px_rgba(20,168,0,0.3)] hover:scale-105 flex items-center justify-center gap-2.5">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-7.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V4.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.165.749 2.508 1.203 4.086 1.203 3 0 5.439-2.452 5.439-5.45.001-3.001-2.438-5.484-5.439-5.484z"/></svg>
+                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-3">
+                    <a href="https://www.upwork.com/freelancers/~01d1e6e01650df66dd" target="_blank" class="px-5 py-2.5 rounded-xl text-sm bg-upwork text-white font-bold hover:bg-white hover:text-upwork transition-all duration-300 shadow-[0_0_20px_rgba(20,168,0,0.3)] hover:scale-105 flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-7.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V4.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.165.749 2.508 1.203 4.086 1.203 3 0 5.439-2.452 5.439-5.45.001-3.001-2.438-5.484-5.439-5.484z"/></svg>
                         Hire on Upwork
                     </a>
-                    
-                    <a href="https://www.fiverr.com/s/pdD54PG" target="_blank" class="px-6 py-3 rounded-xl bg-fiverr text-white font-bold hover:bg-white hover:text-fiverr transition-all duration-300 shadow-[0_0_20px_rgba(29,191,115,0.3)] hover:scale-105 flex items-center justify-center gap-2.5">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.004 12.442c-.163.063-.63.198-1.212.198-1.362 0-2.15-.798-2.15-2.176v-.038h2.71v-1.16h-2.71v-.874c0-1.014.462-1.51 1.363-1.51.55 0 1.062.135 1.062.135l.276-1.235s-.517-.194-1.494-.194c-1.71 0-2.71.98-2.71 2.71v.968h-1.246v1.16h1.246v5.756h2.203v-5.756h2.212l.55-1.16v.176zm-14.13-.036c-.512 0-.874-.362-.874-.874s.362-.875.874-.875.875.363.875-.875-.363.874-.875.874zm1.101 5.966H7.867v-6.916h2.108v6.916zm-6.5-6.916l1.612 4.484 1.61-4.484h2.212l-2.717 6.916H6.076l-2.71-6.916h2.109zm18.11-.106a2.02 2.02 0 0 0-1.76 1.023v-.917h-1.986v6.916h2.108v-3.71c0-.917.55-1.51 1.4-1.51.25 0 .462.036.462.036v-1.802s-.106-.036-.224-.036z"/></svg>
+                    <a href="https://www.fiverr.com/s/pdD54PG" target="_blank" class="px-5 py-2.5 rounded-xl text-sm bg-fiverr text-white font-bold hover:bg-white hover:text-fiverr transition-all duration-300 shadow-[0_0_20px_rgba(29,191,115,0.3)] hover:scale-105 flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.004 12.442c-.163.063-.63.198-1.212.198-1.362 0-2.15-.798-2.15-2.176v-.038h2.71v-1.16h-2.71v-.874c0-1.014.462-1.51 1.363-1.51.55 0 1.062.135 1.062.135l.276-1.235s-.517-.194-1.494-.194c-1.71 0-2.71.98-2.71 2.71v.968h-1.246v1.16h1.246v5.756h2.203v-5.756h2.212l.55-1.16v.176zm-14.13-.036c-.512 0-.874-.362-.874-.874s.362-.875.874-.875.875.363.875-.875-.363.874-.875.874zm1.101 5.966H7.867v-6.916h2.108v6.916zm-6.5-6.916l1.612 4.484 1.61-4.484h2.212l-2.717 6.916H6.076l-2.71-6.916h2.109zm18.11-.106a2.02 2.02 0 0 0-1.76 1.023v-.917h-1.986v6.916h2.108v-3.71c0-.917.55-1.51 1.4-1.51.25 0 .462.036.462.036v-1.802s-.106-.036-.224-.036z"/></svg>
                         Hire on Fiverr
                     </a>
                 </div>
             </div>
 
-            <div class="relative h-[460px] hidden lg:block">
-                <svg viewBox="0 0 620 580" class="w-full h-full">
+            <div class="relative h-[340px] lg:h-[400px] xl:h-[460px] hidden lg:flex items-center justify-center w-full">
+                <svg viewBox="0 0 620 580" class="w-full h-full max-h-full">
                     <defs>
                         <linearGradient id="phoneGrad" x1="0" y1="0" x2="1" y2="1">
                             <stop offset="0%" stop-color="#4C8DFF" stop-opacity="0.9"/>
