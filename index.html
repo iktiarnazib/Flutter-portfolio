@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth scroll-pt-[100px]">
+<html lang="en" class="scroll-smooth bg-[#000000]">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iktiar | App Development</title>
+    <title>Iktiar | Premium Mobile Architecture</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
@@ -16,31 +16,30 @@
                         display: ['Space Grotesk', 'sans-serif'],
                     },
                     colors: {
-                        navy: '#0B1220',
-                        surface: '#121A2B',
-                        accent: '#4C8DFF',
+                        navy: '#000000',
+                        surface: '#0a0a0a',
+                        accent: '#2997ff',
                         amber: '#FFB86B',
                         neonGreen: '#00FF9D',
-                        muted: '#8CA2C4',
+                        muted: '#86868b',
                         upwork: '#14A800',
                         fiverr: '#1DBF73',
-                        roseColor: '#f43f5e',
-                        indigoColor: '#818cf8',
                     },
                     animation: {
-                        'spin-slow': 'spin 8s linear infinite',
+                        'spin-slow': 'spin 20s linear infinite',
+                        'spin-reverse': 'spin 25s linear infinite reverse',
                         'float': 'float 6s ease-in-out infinite',
                         'float-delayed': 'float 8s ease-in-out infinite 3s',
-                        'pulse-glow': 'pulseGlow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'mesh': 'mesh 15s ease-in-out infinite alternate',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
+                            '50%': { transform: 'translateY(-15px)' },
                         },
-                        pulseGlow: {
-                            '0%, 100%': { opacity: 0.4, transform: 'scale(1)' },
-                            '50%': { opacity: 0.8, transform: 'scale(1.05)' },
+                        mesh: {
+                            '0%': { transform: 'scale(1) rotate(0deg)', opacity: 0.15 },
+                            '100%': { transform: 'scale(1.3) rotate(20deg)', opacity: 0.4 },
                         }
                     }
                 }
@@ -49,575 +48,550 @@
     </script>
     <style>
         body {
-            background-color: #0B1220;
-            color: #EAF0FF;
-            overflow-x: clip; 
+            color: #f5f5f7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            background-color: #000000;
         }
 
+        /* Cinematic Film Grain */
+        body::after {
+            content: "";
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.05; pointer-events: none; z-index: 9999;
+        }
+
+        /* Premium Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #000000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+
+        /* Architectural Grid */
         .bg-grid {
+            position: fixed; inset: 0; z-index: -2;
             background-image: 
-                radial-gradient(rgba(76, 141, 255, 0.15) 1px, transparent 1px),
-                radial-gradient(rgba(76, 141, 255, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
-            background-position: 0 0, 20px 20px;
-            position: fixed;
-            inset: 0;
-            z-index: -2;
+                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 80px 80px;
+            mask-image: radial-gradient(ellipse at top, black 0%, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse at top, black 0%, transparent 80%);
             pointer-events: none;
         }
-        
-        .glass-card {
-            background: rgba(18, 26, 43, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(76, 141, 255, 0.15);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        .glass-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: rgba(76, 141, 255, 0.4);
-            box-shadow: 0 15px 35px -10px rgba(76, 141, 255, 0.3), 0 0 15px rgba(255, 184, 107, 0.1);
+
+        /* Dynamic Mesh Backgrounds */
+        .mesh-blob {
+            position: absolute; border-radius: 50%; filter: blur(120px); z-index: -1; pointer-events: none;
         }
 
+        /* ------------------------------------------------------------------
+           MOUSE-TRACKING SPOTLIGHT CARDS (LINEAR.APP STYLE)
+           ------------------------------------------------------------------ */
+        .spotlight-card {
+            position: relative;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(24px) saturate(150%);
+            -webkit-backdrop-filter: blur(24px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .spotlight-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.06), transparent 40%);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .spotlight-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+
+        .spotlight-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Keep content above the spotlight */
+        .spotlight-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ------------------------------------------------------------------ */
+
+        /* Typography */
+        .text-gradient {
+            background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-gradient-accent {
+            background: linear-gradient(135deg, #2997ff 0%, #8B5CF6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Cinematic Physics Reveal */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.9s cubic-bezier(0.5, 0, 0, 1);
+            transform: translateY(40px) scale(0.96);
+            filter: blur(12px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 1; transform: translateY(0) scale(1); filter: blur(0);
         }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
 
-        .glow-blob {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            z-index: -1;
-            filter: blur(80px);
-            opacity: 0.6;
-        }
-
-        .cursor-blink {
-            display: inline-block;
-            width: 8px;
-            height: 16px;
-            background-color: #4C8DFF;
-            animation: blink 1s step-end infinite;
-            vertical-align: middle;
-            margin-left: 4px;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        .check-label { color: #FFB86B; font-weight: 500; }
-        .check-val { color: #A6ACCD; }
+        /* Terminal Window Formatting */
+        .check-label { color: #8B5CF6; font-weight: 600; }
+        .check-val { color: #e2e8f0; }
         .check-str { color: #00FF9D; }
-        .check-comment { color: #697098; font-style: italic; }
+        .check-comment { color: #64748b; font-style: italic; }
+        .cursor-blink {
+            display: inline-block; width: 8px; height: 16px; background-color: #2997ff;
+            animation: blink 1s step-end infinite; vertical-align: middle; margin-left: 4px;
+        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        .float-anchor {
-            transform-box: fill-box;
+        /* Magnetic Button Base */
+        .magnetic-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
         }
-
-        #phoneGroup, #dashboardGroup, #appStoreBadge, #playStoreBadge {
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s ease;
-            transform-box: fill-box;
-            transform-origin: center;
-            cursor: pointer;
-        }
-        #phoneGroup:hover, #dashboardGroup:hover {
-            transform: scale(1.045);
-            filter: drop-shadow(0 10px 25px rgba(76, 141, 255, 0.35));
-        }
-        #appStoreBadge:hover, #playStoreBadge:hover {
-            transform: scale(1.08) translateY(-4px);
-            filter: drop-shadow(0 8px 18px rgba(0, 255, 157, 0.3));
-        }
-
-        .pulse-dot {
-            transform-box: fill-box;
-            transform-origin: center;
+        .magnetic-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(255,255,255,0.15);
         }
     </style>
 </head>
-<body class="antialiased selection:bg-accent selection:text-white relative">
+<body class="antialiased selection:bg-accent/30 selection:text-white relative">
 
     <div class="bg-grid"></div>
-    <div class="glow-blob top-[-10%] left-[-10%] bg-accent animate-pulse-glow"></div>
-    <div class="glow-blob bottom-[20%] right-[-10%] bg-purple-600/40 animate-float-delayed"></div>
+    
+    <!-- Ambient Deep Lighting -->
+    <div class="mesh-blob w-[900px] h-[900px] bg-[#2997ff]/10 top-[-20%] left-[-10%] animate-mesh"></div>
+    <div class="mesh-blob w-[800px] h-[800px] bg-[#8B5CF6]/10 bottom-[10%] right-[-10%] animate-mesh" style="animation-direction: reverse;"></div>
 
-    <div class="fixed top-0 w-full z-50">
-        <div class="w-full bg-[#080D18] border-b border-white/5 px-4 md:px-12 py-2 flex items-center justify-center gap-3 flex-wrap">
-            <span class="hidden sm:flex items-center gap-1.5 text-[11px] font-mono text-muted/70 tracking-wide">
-                <span class="relative flex h-1.5 w-1.5">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neonGreen opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-neonGreen"></span>
-                </span>
-                OPEN FOR PROJECTS
-            </span>
-            <a href="https://www.upwork.com/freelancers/~01d1e6e01650df66dd" target="_blank" class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-upwork/15 hover:bg-upwork/25 border border-upwork/50 text-xs font-bold text-white transition-all duration-300 hover:scale-105">
-                <svg class="w-3.5 h-3.5 text-upwork" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-7.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V4.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.165.749 2.508 1.203 4.086 1.203 3 0 5.439-2.452 5.439-5.45.001-3.001-2.438-5.484-5.439-5.484z"/></svg>
-                Upwork
-            </a>
-            <a href="https://www.fiverr.com/s/pdD54PG" target="_blank" class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-fiverr/15 hover:bg-fiverr/25 border border-fiverr/50 text-xs font-bold text-white transition-all duration-300 hover:scale-105">
-                <svg class="w-3.5 h-3.5 text-fiverr" fill="currentColor" viewBox="0 0 24 24"><path d="M23.004 12.442c-.163.063-.63.198-1.212.198-1.362 0-2.15-.798-2.15-2.176v-.038h2.71v-1.16h-2.71v-.874c0-1.014.462-1.51 1.363-1.51.55 0 1.062.135 1.062.135l.276-1.235s-.517-.194-1.494-.194c-1.71 0-2.71.98-2.71 2.71v.968h-1.246v1.16h1.246v5.756h2.203v-5.756h2.212l.55-1.16v.176zm-14.13-.036c-.512 0-.874-.362-.874-.874s.362-.875.874-.875.875.363.875-.875-.363.874-.875.874zm1.101 5.966H7.867v-6.916h2.108v6.916zm-6.5-6.916l1.612 4.484 1.61-4.484h2.212l-2.717 6.916H6.076l-2.71-6.916h2.109zm18.11-.106a2.02 2.02 0 0 0-1.76 1.023v-.917h-1.986v6.916h2.108v-3.71c0-.917.55-1.51 1.4-1.51.25 0 .462.036.462.036v-1.802s-.106-.036-.224-.036z"/></svg>
-                Fiverr
-            </a>
-        </div>
-        <nav class="w-full glass-card rounded-none border-t-0 border-l-0 border-r-0 border-b border-white/10 py-4 px-6 md:px-12 flex justify-between items-center">
-            <div class="font-display font-bold text-xl tracking-tight text-white flex items-center gap-2">
-                <span class="text-accent">&lt;</span>Iktiar | Mobile Apps<span class="text-accent">/&gt;</span>
+    <!-- Floating Navigation -->
+    <div class="fixed top-6 w-full z-50 flex justify-center px-4 pointer-events-none">
+        <nav class="pointer-events-auto bg-black/40 backdrop-blur-xl border border-white/10 rounded-full px-6 py-3 flex justify-between items-center gap-8 w-full max-w-6xl shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+            <div class="font-display font-bold text-lg tracking-tight text-white flex items-center gap-2">
+                <span class="text-accent">&lt;</span>Iktiar<span class="text-accent">/&gt;</span>
             </div>
-            <div class="hidden md:flex gap-8 text-sm font-medium text-muted">
-                <a href="#about" class="hover:text-white transition-colors">Overview</a>
-                <a href="#byproduct" class="hover:text-white transition-colors">What You Get</a>
-                <a href="#skills" class="hover:text-white transition-colors">How It Works</a>
-                <a href="#work" class="hover:text-white transition-colors">Projects</a>
-                <a href="#contact" class="text-accent hover:text-amber transition-colors">Get in Touch</a>
+            <div class="hidden md:flex gap-8 text-xs font-semibold uppercase tracking-widest text-muted">
+                <a href="#about" class="hover:text-white transition-colors">Philosophy</a>
+                <a href="#ecosystem" class="hover:text-white transition-colors">Ecosystem</a>
+                <a href="#portfolio" class="hover:text-white transition-colors">Portfolio (9)</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="hidden sm:flex items-center gap-2 text-[10px] font-mono text-white/80 uppercase tracking-widest border border-white/10 px-3 py-1.5 rounded-full bg-white/5 shadow-inner">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neonGreen opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-neonGreen"></span>
+                    </span>
+                    Available
+                </span>
+                <a href="#contact" class="hidden sm:block text-xs font-bold bg-white text-black px-5 py-2.5 rounded-full magnetic-btn">Hire Me</a>
             </div>
         </nav>
     </div>
 
-    <section id="about" class="min-h-screen flex flex-col pt-[100px] pb-8 px-6 relative overflow-hidden">
-        
-        <div class="absolute top-16 left-10 w-10 h-10 rounded-xl border border-accent/20 rotate-45 animate-float opacity-30 z-0"></div>
-        <div class="absolute bottom-16 right-10 w-12 h-12 rounded-full border border-amber/20 animate-float-delayed opacity-30 z-0"></div>
-
-        <div class="max-w-7xl mx-auto w-full z-10 reveal active grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 lg:gap-12 items-center my-auto">
+    <!-- Hero Section -->
+    <section id="about" class="min-h-[95vh] flex flex-col justify-center px-6 relative overflow-hidden pt-32 pb-20">
+        <div class="max-w-7xl mx-auto w-full z-10 grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
 
             <div class="text-center lg:text-left">
-                <div class="relative w-16 h-16 mx-auto lg:mx-0 mb-4">
-                    <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-accent via-purple-500 to-amber animate-spin-slow blur-[2px]" style="padding: 3px;"></div>
-                    <div class="relative w-full h-full rounded-full bg-navy border-4 border-navy overflow-hidden z-10 flex items-center justify-center shadow-[0_0_30px_rgba(76,141,255,0.4)]">
-                        <img src="./profile.png" alt="Iktiar Profile" class="w-full h-full object-cover block" onerror="this.src='profile.png'">
-                    </div>
+                
+                <!-- HUD Profile Image - PRESERVED & ENHANCED -->
+                <div class="relative w-24 h-24 mx-auto lg:mx-0 mb-8 flex items-center justify-center reveal">
+                    <!-- Tech Rings -->
+                    <svg class="absolute inset-0 w-full h-full animate-spin-slow opacity-50" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="48" fill="none" stroke="#2997ff" stroke-width="1" stroke-dasharray="4 8" />
+                    </svg>
+                    <svg class="absolute inset-0 w-full h-full animate-spin-reverse opacity-30" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="42" fill="none" stroke="#8B5CF6" stroke-width="1.5" stroke-dasharray="20 10" />
+                    </svg>
+                    <div class="absolute inset-0 rounded-full bg-accent/20 blur-xl"></div>
+                    
+                    <!-- The Actual Image -->
+                    <img src="./profile.png" alt="Iktiar Profile" class="w-16 h-16 rounded-full object-cover border-2 border-white/20 relative z-10 shadow-[0_0_20px_rgba(41,151,255,0.4)]" onerror="this.style.display='none'">
                 </div>
 
-                <div class="inline-block px-3 py-1 rounded text-[10px] sm:text-xs font-mono text-neonGreen bg-neonGreen/10 mb-3 border border-neonGreen/20">From App idea to App launch. Everything handled, from design to deployment.</div>
+                <div class="reveal delay-1 inline-flex items-center gap-3 px-4 py-2 rounded-full text-xs font-mono font-semibold text-accent bg-accent/10 mb-6 border border-accent/20 backdrop-blur-md shadow-[0_0_20px_rgba(41,151,255,0.1)]">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    End-to-End Application Architecture
+                </div>
 
-                <h1 class="font-display text-3xl md:text-4xl lg:text-[2.5rem] xl:text-5xl font-bold leading-tight mb-3 text-white">
-                    Everything you need to launch<br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#2E5BFF] to-purple-500">and manage your mobile app.</span>
+                <h1 class="reveal delay-2 font-display text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold leading-[1.05] mb-6 tracking-tight">
+                    Launch your app.<br>
+                    <span class="text-gradient-accent">Control your business.</span>
                 </h1>
                 
-                <p class="text-sm md:text-base text-muted max-w-xl mx-auto lg:mx-0 mb-5 leading-relaxed font-light">
-                    Get a custom iOS & Android app with a powerful admin dashboard, so you can manage your business without relying on a developer for every update.<br><br>Built with proven experience, including Konga Online Marketplace and Meetup: Social Events & Groups, each with over 1 million Google Play downloads.<br><br>Launch confidently. Manage effortlessly.
+                <p class="reveal delay-3 text-lg md:text-xl text-muted max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed font-light">
+                    Stop relying on developers for every update. I engineer premium iOS & Android apps paired with powerful administrative dashboards, giving you complete operational control from day one.
                 </p>
                 
-                <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-4">
-                    <a href="#work" class="px-5 py-2.5 rounded-xl text-sm bg-accent text-navy font-bold hover:bg-white hover:scale-105 transition-all shadow-[0_0_20px_rgba(76,141,255,0.4)]">View My Work</a>
-                    <a href="#byproduct" class="px-5 py-2.5 rounded-xl text-sm glass-card font-bold text-white hover:border-amber transition-all flex items-center justify-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m4 10V11m4 6V9M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                        See What's Included
+                <div class="reveal delay-3 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                    <a href="#contact" class="magnetic-btn px-8 py-4 rounded-full text-sm bg-white text-black font-bold flex items-center justify-center gap-2">
+                        Start Your Project
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                     </a>
-                </div>
-
-                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-3">
-                    <a href="https://www.upwork.com/freelancers/~01d1e6e01650df66dd" target="_blank" class="px-5 py-2.5 rounded-xl text-sm bg-upwork text-white font-bold hover:bg-white hover:text-upwork transition-all duration-300 shadow-[0_0_20px_rgba(20,168,0,0.3)] hover:scale-105 flex items-center justify-center gap-2">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-7.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V4.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.165.749 2.508 1.203 4.086 1.203 3 0 5.439-2.452 5.439-5.45.001-3.001-2.438-5.484-5.439-5.484z"/></svg>
-                        Hire on Upwork
-                    </a>
-                    <a href="https://www.fiverr.com/s/pdD54PG" target="_blank" class="px-5 py-2.5 rounded-xl text-sm bg-fiverr text-white font-bold hover:bg-white hover:text-fiverr transition-all duration-300 shadow-[0_0_20px_rgba(29,191,115,0.3)] hover:scale-105 flex items-center justify-center gap-2">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.004 12.442c-.163.063-.63.198-1.212.198-1.362 0-2.15-.798-2.15-2.176v-.038h2.71v-1.16h-2.71v-.874c0-1.014.462-1.51 1.363-1.51.55 0 1.062.135 1.062.135l.276-1.235s-.517-.194-1.494-.194c-1.71 0-2.71.98-2.71 2.71v.968h-1.246v1.16h1.246v5.756h2.203v-5.756h2.212l.55-1.16v.176zm-14.13-.036c-.512 0-.874-.362-.874-.874s.362-.875.874-.875.875.363.875-.875-.363.874-.875.874zm1.101 5.966H7.867v-6.916h2.108v6.916zm-6.5-6.916l1.612 4.484 1.61-4.484h2.212l-2.717 6.916H6.076l-2.71-6.916h2.109zm18.11-.106a2.02 2.02 0 0 0-1.76 1.023v-.917h-1.986v6.916h2.108v-3.71c0-.917.55-1.51 1.4-1.51.25 0 .462.036.462.036v-1.802s-.106-.036-.224-.036z"/></svg>
-                        Hire on Fiverr
+                    <a href="#portfolio" class="magnetic-btn px-8 py-4 rounded-full text-sm bg-[#111] border border-white/10 font-bold text-white hover:border-white/30 transition-all text-center">
+                        View 9 Case Studies
                     </a>
                 </div>
             </div>
 
-            <div class="relative h-[340px] lg:h-[400px] xl:h-[460px] hidden lg:flex items-center justify-center w-full">
-                <svg viewBox="0 0 620 580" class="w-full h-full max-h-full">
+            <!-- SVG Visualization -->
+            <div class="reveal delay-2 relative h-[450px] xl:h-[550px] hidden lg:flex items-center justify-center w-full">
+                <svg viewBox="0 0 620 580" class="w-full h-full max-h-full drop-shadow-2xl">
                     <defs>
                         <linearGradient id="phoneGrad" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#4C8DFF" stop-opacity="0.9"/>
-                            <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0.9"/>
+                            <stop offset="0%" stop-color="#4C8DFF"/>
+                            <stop offset="100%" stop-color="#8B5CF6"/>
                         </linearGradient>
-                        <linearGradient id="dashGrad" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#FFB86B"/>
-                            <stop offset="100%" stop-color="#00FF9D"/>
-                        </linearGradient>
-                        <linearGradient id="playGrad" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#00FF9D"/>
-                            <stop offset="100%" stop-color="#4C8DFF"/>
-                        </linearGradient>
+                        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="6" result="blur" />
+                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                        </filter>
                     </defs>
 
-                    <path d="M 108 172 C 130 200, 150 210, 155 240" stroke="#4C8DFF" stroke-width="2" fill="none" stroke-dasharray="6 6" opacity="0.55"/>
-                    <path d="M 220 330 C 260 300, 280 260, 330 190" stroke="#4C8DFF" stroke-width="2" fill="none" stroke-dasharray="6 6" opacity="0.6"/>
-                    <path d="M 196 60 C 260 40, 300 60, 330 105" stroke="#00FF9D" stroke-width="2" fill="none" stroke-dasharray="6 6" opacity="0.4"/>
-                    <circle cx="108" cy="172" r="4" fill="#00FF9D"/>
-                    <circle cx="330" cy="190" r="4" fill="#FFB86B"/>
-                    <circle cx="330" cy="105" r="4" fill="#00FF9D"/>
+                    <!-- Real-Time Sync Lines -->
+                    <path d="M 108 172 C 130 200, 150 210, 155 240" stroke="#4C8DFF" stroke-width="1.5" fill="none" stroke-dasharray="4 4" opacity="0.5">
+                        <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite"/>
+                    </path>
+                    <path d="M 220 330 C 260 300, 280 260, 330 190" stroke="#8B5CF6" stroke-width="1.5" fill="none" stroke-dasharray="4 4" opacity="0.5">
+                        <animate attributeName="stroke-dashoffset" from="0" to="100" dur="3s" repeatCount="indefinite"/>
+                    </path>
+                    <path d="M 196 60 C 260 40, 300 60, 330 105" stroke="#00FF9D" stroke-width="1.5" fill="none" stroke-dasharray="4 4" opacity="0.4"/>
+                    
+                    <circle cx="108" cy="172" r="3.5" fill="#4C8DFF" filter="url(#glow)"/>
+                    <circle cx="330" cy="190" r="3.5" fill="#8B5CF6" filter="url(#glow)"/>
+                    <circle cx="330" cy="105" r="3.5" fill="#00FF9D" filter="url(#glow)"/>
 
-                    <g class="animate-float float-anchor">
-                    <g transform="translate(20,16)">
-                    <g id="appStoreBadge">
-                        <rect x="0" y="0" width="176" height="52" rx="12" fill="#121A2B" stroke="#4C8DFF" stroke-opacity="0.4" stroke-width="1.5"/>
-                        <rect x="8" y="8" width="36" height="36" rx="10" fill="#0F172A" stroke="#4C8DFF" stroke-opacity="0.5"/>
-                        <path d="M 20 30 L 26 22 L 32 30 M 26 24 L 26 34" stroke="#4C8DFF" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        <text x="54" y="21" font-family="JetBrains Mono, monospace" font-size="8" fill="#8CA2C4">DOWNLOAD ON THE</text>
-                        <text x="54" y="37" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#EAF0FF">App Store</text>
-                    </g>
-                    </g>
-                    </g>
-
-                    <g class="animate-float-delayed float-anchor">
-                    <g transform="translate(20,76)">
-                    <g id="playStoreBadge">
-                        <rect x="0" y="0" width="176" height="52" rx="12" fill="#121A2B" stroke="#00FF9D" stroke-opacity="0.4" stroke-width="1.5"/>
-                        <rect x="8" y="8" width="36" height="36" rx="10" fill="#0F172A" stroke="#00FF9D" stroke-opacity="0.5"/>
-                        <polygon points="21,16 21,36 37,26" fill="url(#playGrad)"/>
-                        <text x="54" y="21" font-family="JetBrains Mono, monospace" font-size="8" fill="#8CA2C4">GET IT ON</text>
-                        <text x="54" y="37" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" fill="#EAF0FF">Google Play</text>
-                    </g>
-                    </g>
+                    <g class="animate-float" style="transform-origin: center; transform-box: fill-box;">
+                        <g transform="translate(20,16)">
+                            <rect x="0" y="0" width="176" height="52" rx="14" fill="rgba(10,10,10,0.8)" stroke="#4C8DFF" stroke-opacity="0.3" stroke-width="1"/>
+                            <rect x="8" y="8" width="36" height="36" rx="10" fill="#151515" stroke="#4C8DFF" stroke-opacity="0.4"/>
+                            <path d="M 20 30 L 26 22 L 32 30 M 26 24 L 26 34" stroke="#4C8DFF" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            <text x="54" y="22" font-family="JetBrains Mono" font-size="8" fill="#86868b" letter-spacing="0.5">APP STORE READY</text>
+                            <text x="54" y="38" font-family="Space Grotesk" font-size="16" font-weight="700" fill="#fff">Native iOS</text>
+                        </g>
                     </g>
 
-                    <g transform="translate(20,138)">
-                        <rect x="0" y="0" width="176" height="30" rx="15" fill="#0F172A" stroke="#FFB86B" stroke-opacity="0.3"/>
-                        <text x="88" y="20" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#FFB86B">★★★★★ 4.9 &#8226; 50K+ downloads</text>
+                    <g class="animate-float-delayed" style="transform-origin: center; transform-box: fill-box;">
+                        <g transform="translate(20,76)">
+                            <rect x="0" y="0" width="176" height="52" rx="14" fill="rgba(10,10,10,0.8)" stroke="#00FF9D" stroke-opacity="0.3" stroke-width="1"/>
+                            <rect x="8" y="8" width="36" height="36" rx="10" fill="#151515" stroke="#00FF9D" stroke-opacity="0.4"/>
+                            <polygon points="21,16 21,36 37,26" fill="#00FF9D"/>
+                            <text x="54" y="22" font-family="JetBrains Mono" font-size="8" fill="#86868b" letter-spacing="0.5">GOOGLE PLAY READY</text>
+                            <text x="54" y="38" font-family="Space Grotesk" font-size="16" font-weight="700" fill="#fff">Android</text>
+                        </g>
                     </g>
 
-                    <g class="animate-float-delayed float-anchor">
-                    <g transform="translate(330,90)">
-                    <g id="dashboardGroup">
-                        <rect x="0" y="0" width="280" height="190" rx="14" fill="#121A2B" stroke="url(#dashGrad)" stroke-width="1.5" opacity="0.96"/>
-                        <rect x="16" y="18" width="248" height="26" rx="6" fill="#0F172A" stroke="#FFB86B" stroke-opacity="0.3"/>
-                        <circle cx="28" cy="31" r="4" fill="#FF6B6B"/>
-                        <circle cx="42" cy="31" r="4" fill="#FFB86B"/>
-                        <circle cx="56" cy="31" r="4" fill="#00FF9D"/>
-                        <circle cx="222" cy="31" r="3.5" fill="#00FF9D" class="animate-pulse-glow pulse-dot"/>
-                        <text x="235" y="35" font-family="JetBrains Mono, monospace" font-size="9" fill="#00FF9D">LIVE</text>
-                        <text x="140" y="35" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#8CA2C4">your.dashboard</text>
+                    <g class="animate-float-delayed" style="transform-origin: center; transform-box: fill-box;">
+                        <g transform="translate(330,90)">
+                            <rect x="0" y="0" width="280" height="200" rx="16" fill="rgba(10,10,10,0.95)" stroke="rgba(255,255,255,0.1)" stroke-width="1" filter="drop-shadow(0 30px 40px rgba(0,0,0,0.8))"/>
+                            <rect x="0" y="0" width="280" height="40" rx="16" fill="rgba(255,255,255,0.03)"/>
+                            <circle cx="20" cy="20" r="5" fill="#FF5F56"/>
+                            <circle cx="36" cy="20" r="5" fill="#FFBD2E"/>
+                            <circle cx="52" cy="20" r="5" fill="#27C93F"/>
+                            <text x="140" y="24" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#86868b">admin.yourbusiness.com</text>
 
-                        <rect x="16" y="56" width="118" height="52" rx="8" fill="#0F172A" stroke="#4C8DFF" stroke-opacity="0.35"/>
-                        <text x="26" y="72" font-family="JetBrains Mono, monospace" font-size="9" fill="#8CA2C4">ACTIVE USERS</text>
-                        <text id="activeUsersCount" x="26" y="96" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="700" fill="#00FF9D">12,840</text>
+                            <rect x="16" y="56" width="118" height="60" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(76,141,255,0.3)"/>
+                            <text x="26" y="76" font-family="JetBrains Mono" font-size="9" fill="#86868b">LIVE USERS</text>
+                            <text id="activeUsersCount" x="26" y="102" font-family="Space Grotesk" font-size="24" font-weight="700" fill="#fff">1,024</text>
 
-                        <rect x="146" y="56" width="118" height="52" rx="8" fill="#0F172A" stroke="#FFB86B" stroke-opacity="0.35"/>
-                        <text x="156" y="72" font-family="JetBrains Mono, monospace" font-size="9" fill="#8CA2C4">PUSH QUEUE</text>
-                        <text id="pushStatusText" x="156" y="96" font-family="Space Grotesk, sans-serif" font-size="18" font-weight="700" fill="#FFB86B">Sent ✓</text>
+                            <rect x="146" y="56" width="118" height="60" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(255,184,107,0.3)"/>
+                            <text x="156" y="76" font-family="JetBrains Mono" font-size="9" fill="#86868b">SERVER STATUS</text>
+                            <text id="pushStatusText" x="156" y="102" font-family="Space Grotesk" font-size="20" font-weight="700" fill="#FFB86B">Healthy</text>
 
-                        <rect x="16" y="118" width="248" height="52" rx="8" fill="#0F172A" stroke="#8B5CF6" stroke-opacity="0.35"/>
-                        <polyline id="analyticsLine" points="26,158 50,140 74,150 98,132 122,145 146,120 170,138 194,128 218,142 242,124" fill="none" stroke="#8B5CF6" stroke-width="2"/>
-                        <text x="26" y="132" font-family="JetBrains Mono, monospace" font-size="9" fill="#8CA2C4">LIVE ANALYTICS</text>
-                    </g>
-                    </g>
+                            <rect x="16" y="128" width="248" height="56" rx="10" fill="rgba(255,255,255,0.02)" stroke="rgba(139,92,246,0.3)"/>
+                            <polyline id="analyticsLine" points="26,170 50,150 74,160 98,140 122,155 146,130 170,148 194,138 218,152 242,134" fill="none" stroke="#8B5CF6" stroke-width="2"/>
+                        </g>
                     </g>
 
-                    <g class="animate-float float-anchor">
-                    <g transform="translate(70,240)">
-                    <g id="phoneGroup">
-                        <rect x="0" y="0" width="150" height="290" rx="24" fill="#0B1220" stroke="url(#phoneGrad)" stroke-width="2.5"/>
-                        <rect x="8" y="14" width="134" height="262" rx="14" fill="#121A2B"/>
-                        <circle cx="140" cy="10" r="9" fill="#FF6B6B" class="animate-pulse-glow pulse-dot"/>
-                        <text x="140" y="13" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="9" font-weight="700" fill="#0B1220">3</text>
-                        <rect x="20" y="28" width="70" height="10" rx="5" fill="#4C8DFF" opacity="0.8"/>
-                        <rect x="20" y="50" width="110" height="56" rx="10" fill="#0F172A" stroke="#4C8DFF" stroke-opacity="0.3"/>
-                        <circle cx="45" cy="78" r="13" fill="#4C8DFF" opacity="0.6"/>
-                        <rect x="66" y="68" width="50" height="8" rx="4" fill="#8CA2C4"/>
-                        <rect x="66" y="84" width="35" height="6" rx="3" fill="#697098"/>
+                    <g class="animate-float" style="transform-origin: center; transform-box: fill-box;">
+                        <g transform="translate(80,240)">
+                            <rect x="0" y="0" width="150" height="300" rx="28" fill="#000" stroke="url(#phoneGrad)" stroke-width="2" filter="drop-shadow(0 40px 50px rgba(0,0,0,0.8))"/>
+                            <rect x="8" y="8" width="134" height="284" rx="20" fill="#080808"/>
+                            <rect x="45" y="14" width="60" height="12" rx="6" fill="#000"/>
+                            
+                            <rect x="20" y="44" width="70" height="10" rx="5" fill="#4C8DFF" opacity="0.9"/>
+                            <rect x="20" y="64" width="110" height="60" rx="12" fill="rgba(255,255,255,0.08)"/>
+                            <circle cx="45" cy="94" r="14" fill="#4C8DFF" opacity="0.5"/>
+                            <rect x="70" y="84" width="45" height="6" rx="3" fill="#fff" opacity="0.8"/>
+                            <rect x="70" y="98" width="30" height="4" rx="2" fill="#fff" opacity="0.4"/>
 
-                        <rect x="20" y="120" width="48" height="48" rx="12" fill="#4C8DFF" opacity="0.85"/>
-                        <rect x="34" y="134" width="20" height="20" rx="5" fill="#0B1220" opacity="0.5"/>
-                        <rect x="82" y="120" width="48" height="48" rx="12" fill="#FFB86B" opacity="0.85"/>
-                        <circle cx="106" cy="144" r="10" fill="#0B1220" opacity="0.5"/>
-                        <rect x="20" y="176" width="48" height="48" rx="12" fill="#8B5CF6" opacity="0.85"/>
-                        <polygon points="36,200 44,186 52,200" fill="#0B1220" opacity="0.5"/>
-                        <rect x="82" y="176" width="48" height="48" rx="12" fill="#00FF9D" opacity="0.85"/>
-                        <rect x="94" y="192" width="24" height="16" rx="4" fill="#0B1220" opacity="0.5"/>
-
-                        <rect x="20" y="236" width="110" height="26" rx="8" fill="#0F172A" stroke="#4C8DFF" stroke-opacity="0.25"/>
-                        <circle cx="38" cy="249" r="3.5" fill="#4C8DFF"/>
-                        <circle cx="63" cy="249" r="3.5" fill="#697098"/>
-                        <circle cx="88" cy="249" r="3.5" fill="#697098"/>
-                        <circle cx="113" cy="249" r="3.5" fill="#697098"/>
-                        <rect x="45" y="270" width="60" height="7" rx="3.5" fill="#4C8DFF" opacity="0.5"/>
-                    </g>
-                    </g>
+                            <rect x="20" y="136" width="50" height="50" rx="14" fill="#8B5CF6" opacity="0.9"/>
+                            <rect x="80" y="136" width="50" height="50" rx="14" fill="#FFB86B" opacity="0.9"/>
+                            <rect x="20" y="196" width="50" height="50" rx="14" fill="#00FF9D" opacity="0.9"/>
+                            <rect x="80" y="196" width="50" height="50" rx="14" fill="#4C8DFF" opacity="0.9"/>
+                        </g>
                     </g>
                 </svg>
             </div>
         </div>
     </section>
 
-    <section id="byproduct" class="min-h-[calc(100vh-100px)] flex flex-col py-12 px-6 relative z-10 border-t border-white/5">
-        <div class="max-w-6xl w-full mx-auto my-auto">
-            <div class="text-center mb-16 reveal">
-                <div class="inline-block px-3 py-1 rounded text-xs font-mono text-neonGreen bg-neonGreen/10 mb-4 border border-neonGreen/20">What You Actually Get</div>
-                <h2 class="font-display text-3xl md:text-4xl font-bold mb-4 text-white">You stay in control, even after launch.</h2>
-                <p class="text-muted max-w-2xl mx-auto text-lg">Add an offer, message your users, check how your business is doing, all on your own. You won't need to wait on a developer or touch a single line of code.</p>
+    <!-- Client Value Proposition Grid -->
+    <section id="ecosystem" class="py-24 px-6 relative z-10 border-t border-white/5 bg-[#020202]">
+        <div class="max-w-7xl w-full mx-auto">
+            <div class="text-center mb-20 reveal">
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">An Ecosystem, Not Just an App.</h2>
+                <p class="text-muted max-w-2xl mx-auto text-lg leading-relaxed">Most freelancers hand you code and vanish. I deliver a cohesive technical foundation—an app your users love, connected to a dashboard you control.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                <div class="glass-card rounded-2xl p-6 reveal">
-                    <div class="w-12 h-12 rounded-xl bg-accent/15 flex items-center justify-center mb-5 text-accent">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m4 10V11m4 6V9M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Highlight Box -->
+                <div class="spotlight-card p-10 reveal md:col-span-2">
+                    <div class="w-14 h-14 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-8 text-accent">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m4 10V11m4 6V9M5 21h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
                     </div>
-                    <h3 class="font-display font-bold text-lg text-white mb-2">Your Own Control Panel</h3>
-                    <p class="text-sm text-muted leading-relaxed">A simple website where you can manage users, approve content, and turn features on or off yourself. No developer needed for everyday tasks.</p>
+                    <h3 class="font-display font-bold text-3xl text-white mb-4">Master Admin Dashboard</h3>
+                    <p class="text-muted leading-relaxed text-lg max-w-lg">Manage users, approve content, review analytics, and toggle feature flags—all from an intuitive web portal. Run your business without looking at a single line of code.</p>
                 </div>
 
-                <div class="glass-card rounded-2xl p-6 reveal" style="transition-delay: 60ms;">
-                    <div class="w-12 h-12 rounded-xl bg-amber/15 flex items-center justify-center mb-5 text-amber">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                <div class="spotlight-card p-10 reveal delay-1">
+                    <div class="w-14 h-14 rounded-2xl bg-amber/10 border border-amber/20 flex items-center justify-center mb-8 text-amber">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
                     </div>
-                    <h3 class="font-display font-bold text-lg text-white mb-2">Send Notifications Yourself</h3>
-                    <p class="text-sm text-muted leading-relaxed">Send announcements, promos, or alerts straight from your panel. Schedule them ahead of time, target specific groups of users, and see who actually opened them.</p>
+                    <h3 class="font-display font-bold text-2xl text-white mb-4">Push Engagement</h3>
+                    <p class="text-muted leading-relaxed">Send promos, alerts, and system updates directly from your dashboard to every user's device instantly.</p>
                 </div>
 
-                <div class="glass-card rounded-2xl p-6 reveal" style="transition-delay: 120ms;">
-                    <div class="w-12 h-12 rounded-xl bg-purple-500/15 flex items-center justify-center mb-5 text-purple-400">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                <div class="spotlight-card p-10 reveal">
+                    <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-8 text-purple-400">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                     </div>
-                    <h3 class="font-display font-bold text-lg text-white mb-2">See Your Numbers</h3>
-                    <p class="text-sm text-muted leading-relaxed">Real numbers that matter: who's sticking around, where you're making money, and where people are dropping off, all laid out clearly so you can actually use them.</p>
+                    <h3 class="font-display font-bold text-2xl text-white mb-4">Bank-Grade Security</h3>
+                    <p class="text-muted leading-relaxed">Enterprise-level data encryption, secure auth layers, and role-based access control for your team.</p>
                 </div>
 
-                <div class="glass-card rounded-2xl p-6 reveal" style="transition-delay: 0ms;">
-                    <div class="w-12 h-12 rounded-xl bg-neonGreen/15 flex items-center justify-center mb-5 text-neonGreen">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m6-2.13a4 4 0 10-4-4 4 4 0 004 4zm6 0a4 4 0 10-4-4"/></svg>
+                <div class="spotlight-card p-10 reveal delay-1 md:col-span-2">
+                    <div class="w-14 h-14 rounded-2xl bg-neonGreen/10 border border-neonGreen/20 flex items-center justify-center mb-8 text-neonGreen">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
                     </div>
-                    <h3 class="font-display font-bold text-lg text-white mb-2">Give Your Team Access</h3>
-                    <p class="text-sm text-muted leading-relaxed">Editors, moderators, support staff, and owners each get exactly the access they need to do their job, and nothing more.</p>
+                    <h3 class="font-display font-bold text-3xl text-white mb-4">Zero-Latency Sync</h3>
+                    <p class="text-muted leading-relaxed text-lg max-w-lg">Update a price, ban a user, or change text on your dashboard, and it reflects instantaneously on iOS and Android worldwide. No app store resubmissions required.</p>
                 </div>
-
-                <div class="glass-card rounded-2xl p-6 reveal" style="transition-delay: 60ms;">
-                    <div class="w-12 h-12 rounded-xl bg-blue-400/15 flex items-center justify-center mb-5 text-blue-400">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                    </div>
-                    <h3 class="font-display font-bold text-lg text-white mb-2">Update Content Anytime</h3>
-                    <p class="text-sm text-muted leading-relaxed">Change text, swap banners, and publish new articles or lessons all from a simple panel. Updates show up in your app right away, with no waiting on an app store review.</p>
-                </div>
-
-                <div class="glass-card rounded-2xl p-6 reveal" style="transition-delay: 120ms;">
-                    <div class="w-12 h-12 rounded-xl bg-rose-400/15 flex items-center justify-center mb-5 text-rose-400">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                    </div>
-                    <h3 class="font-display font-bold text-lg text-white mb-2">Nothing Ever Falls Out of Sync</h3>
-                    <p class="text-sm text-muted leading-relaxed">Your app, your dashboard, and any partner-facing portal all show the same information at the same time. Nothing ever drifts out of sync.</p>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <section id="skills" class="min-h-[calc(100vh-100px)] flex flex-col py-12 px-6 relative z-10 border-t border-white/5 bg-gradient-to-b from-transparent to-surface/40">
-        <div class="max-w-6xl w-full mx-auto flex flex-col lg:flex-row gap-16 items-center reveal my-auto">
+    <!-- macOS Terminal / Technical Specs -->
+    <section class="py-24 px-6 relative z-10 border-t border-white/5 bg-gradient-to-b from-[#020202] to-[#050505]">
+        <div class="max-w-7xl w-full mx-auto flex flex-col lg:flex-row gap-16 items-center reveal">
+            
             <div class="lg:w-1/2">
-                <div class="inline-block px-3 py-1 rounded text-xs font-mono text-amber bg-amber/10 mb-4 border border-amber/20">How It Works</div>
-                <h2 class="font-display text-3xl md:text-4xl font-bold mb-6 text-white">One project, working together.</h2>
-                <p class="text-muted text-lg leading-relaxed mb-8">
-                    Your app and its dashboard aren't two separate projects stuck together. They share the same information underneath, so the moment something happens in your app, it shows up in your dashboard too. Nothing extra to maintain, and no risk of the two ever falling out of step.
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">Code that performs under pressure.</h2>
+                <p class="text-muted text-lg leading-relaxed mb-10">
+                    Your architecture determines your ceiling. I build on decoupled, highly scalable stacks ensuring your tech never bottlenecks your business growth.
                 </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-mono text-muted">
-                    <div class="glass-card p-4 rounded-xl flex items-center gap-3">
-                        <div class="w-8 h-8 rounded bg-accent/20 flex items-center justify-center text-accent">◈</div>
-                        Smooth, No Lag
+                
+                <div class="space-y-4 font-mono text-sm text-white/80">
+                    <div class="flex items-center gap-4 bg-white/5 border border-white/10 p-4 rounded-xl backdrop-blur-sm">
+                        <div class="w-2.5 h-2.5 rounded-full bg-accent animate-pulse"></div>
+                        60FPS Native Rendering
                     </div>
-                    <div class="glass-card p-4 rounded-xl flex items-center gap-3">
-                        <div class="w-8 h-8 rounded bg-amber/20 flex items-center justify-center text-amber">⚙</div>
-                        Ready for the App Store & Google Play
+                    <div class="flex items-center gap-4 bg-white/5 border border-white/10 p-4 rounded-xl backdrop-blur-sm">
+                        <div class="w-2.5 h-2.5 rounded-full bg-amber animate-pulse"></div>
+                        App Store & Google Play Compliant
                     </div>
-                    <div class="glass-card p-4 rounded-xl flex items-center gap-3">
-                        <div class="w-8 h-8 rounded bg-purple-500/20 flex items-center justify-center text-purple-400">⚡</div>
-                        Updates in Real Time
-                    </div>
-                    <div class="glass-card p-4 rounded-xl flex items-center gap-3">
-                        <div class="w-8 h-8 rounded bg-neonGreen/20 flex items-center justify-center text-neonGreen">🎨</div>
-                        Custom Look and Smooth Motion
-                    </div>
-                    <div class="glass-card p-4 rounded-xl flex items-center gap-3 sm:col-span-2">
-                        <div class="w-8 h-8 rounded bg-blue-400/20 flex items-center justify-center text-blue-400">🖥</div>
-                        A Dashboard You Can Open From Any Browser
+                    <div class="flex items-center gap-4 bg-white/5 border border-white/10 p-4 rounded-xl backdrop-blur-sm">
+                        <div class="w-2.5 h-2.5 rounded-full bg-neonGreen animate-pulse"></div>
+                        Automated CI/CD Pipelines
                     </div>
                 </div>
             </div>
             
-            <div class="lg:w-1/2 w-full glass-card rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
-                <div class="bg-navy/80 border-b border-white/10 px-4 py-3 flex items-center gap-2 backdrop-blur-md">
+            <!-- Terminal Window -->
+            <div class="lg:w-1/2 w-full rounded-2xl overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.9)] transform lg:-rotate-2 transition-transform duration-700 border border-white/10 bg-[#0a0a0c]">
+                <div class="bg-[#121215] border-b border-white/10 px-4 py-3 flex items-center justify-between">
                     <div class="flex gap-2">
-                        <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                        <div class="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
+                        <div class="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
+                        <div class="w-3 h-3 rounded-full bg-[#27C93F]"></div>
                     </div>
-                    <div class="text-xs text-muted/80 font-mono mx-auto pr-8 flex items-center gap-2">
-                        <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                        what_you_get.txt
-                    </div>
+                    <div class="text-xs text-[#86868b] font-mono tracking-widest uppercase opacity-70">iktiar@architecture: ~</div>
+                    <div class="w-12"></div>
                 </div>
-                <div class="p-6 md:p-8 font-mono text-sm md:text-base leading-relaxed overflow-x-auto bg-[#0F172A]">
-                    <div><span class="check-label">Project</span>: <span class="check-val">Your App</span></div>
-                    <div><span class="check-label">Purpose</span>: <span class="check-str">"Built around what your business actually needs"</span></div>
-                    <div class="mt-4"><span class="check-comment"># Every project starts here</span></div>
-                    <div><span class="check-label">Timeline</span>:</div>
-                    <div>&nbsp;&nbsp;<span class="check-label">start to launch</span>: <span class="check-str">"clear, no surprises"</span></div>
-                    <div class="mt-4"><span class="check-comment"># What's included, every time</span></div>
-                    <div><span class="check-label">included</span>:</div>
-                    <div class="mt-2 bg-white/5 -mx-4 px-4 py-1 border-l-2 border-accent">
-                        &nbsp;&nbsp;<span class="check-val">Working app for iPhone and Android</span> <span class="text-accent text-xs ml-2"># Ready to publish</span>
+                <div class="p-8 font-mono text-sm leading-relaxed overflow-x-auto text-[#a9b1d6]">
+                    <div><span class="check-label">project_scope</span>: <span class="check-val">Full-Stack Ecosystem</span></div>
+                    <div><span class="check-label">philosophy</span>: <span class="check-str">"Ship products, not just code"</span></div>
+                    <br>
+                    <div><span class="check-comment"># Execution Timeline</span></div>
+                    <div><span class="check-label">delivery</span>:</div>
+                    <div>&nbsp;&nbsp;<span class="check-label">phase_1</span>: <span class="check-str">"UI/UX Architecture"</span></div>
+                    <div>&nbsp;&nbsp;<span class="check-label">phase_2</span>: <span class="check-str">"API & Database Engineering"</span></div>
+                    <div>&nbsp;&nbsp;<span class="check-label">phase_3</span>: <span class="check-str">"Client Deployment (iOS/Android)"</span></div>
+                    <br>
+                    <div><span class="check-comment"># The Deliverables</span></div>
+                    <div><span class="check-label">artifacts</span>:</div>
+                    <div class="mt-1 bg-white/5 -mx-4 px-4 py-1 border-l-2 border-accent">
+                        &nbsp;&nbsp;<span class="check-val">Compiled native binaries</span> <span class="text-accent text-xs ml-2"># App Store Ready</span>
                     </div>
-                    <div>&nbsp;&nbsp;<span class="check-val">Your own admin dashboard</span></div>
-                    <div>&nbsp;&nbsp;<span class="check-val">Push notifications, ready to send</span></div>
-                    <div>&nbsp;&nbsp;<span class="check-val">Clean, custom design</span></div>
-                    <div class="mt-2 bg-white/5 -mx-4 px-4 py-1 border-l-2 border-amber">
-                        &nbsp;&nbsp;<span class="check-val">Live charts and simple reports</span> <span class="text-amber text-xs ml-2"># See what's happening at a glance</span>
-                    </div>
-                    <div>&nbsp;&nbsp;<span class="check-val">Everything kept in sync automatically</span> <span class="check-comment"># No extra work for you</span></div>
-                    <div class="mt-4"><span class="check-label">support</span>:</div>
-                    <div>&nbsp;&nbsp;<span class="check-val">Help after launch, whenever you need it</span><span class="cursor-blink"></span></div>
+                    <div>&nbsp;&nbsp;<span class="check-val">Admin dashboard credentials</span></div>
+                    <div>&nbsp;&nbsp;<span class="check-val">Cloud server infrastructure</span></div>
+                    <br>
+                    <div><span class="check-label">status</span>: <span class="check-val">Awaiting initialization</span><span class="cursor-blink"></span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="work" class="min-h-[calc(100vh-100px)] flex flex-col py-12 px-6 relative z-10 bg-surface/20 border-t border-white/5">
-        <div class="max-w-6xl w-full mx-auto my-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="font-display text-3xl md:text-4xl font-bold mb-4 text-white">Project Gallery</h2>
-                <p class="text-muted max-w-2xl mx-auto">Nine real projects. Each one came with an app plus the dashboard or panel that runs it, the part clients actually use every single day.</p>
+    <!-- The 9-Project Portfolio Grid -->
+    <section id="portfolio" class="py-32 px-6 relative z-10 border-t border-white/5 bg-[#000000]">
+        <div class="max-w-7xl w-full mx-auto">
+            <div class="text-center mb-24 reveal">
+                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full text-xs font-mono font-semibold text-white bg-white/10 mb-6 border border-white/20">
+                    <span class="w-2 h-2 rounded-full bg-neonGreen animate-pulse"></span> 9 Successful Deployments
+                </div>
+                <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 text-white tracking-tight">Proven at global scale.</h2>
+                <p class="text-muted max-w-2xl mx-auto text-lg">Every project represents a comprehensive solution: a consumer-facing mobile application seamlessly tethered to a robust business administration panel.</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <a href="dashboard.html" class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden block text-left">
-                    <div class="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="flex items-start justify-between mb-6 relative z-10">
-                        <img src="./Dashbaord/Dashbaord Logo.png" alt="Dashboard Logo" class="w-14 h-14 rounded-2xl shadow-lg object-cover border border-white/10" onerror="this.style.display='none'">
-                        <span class="text-[10px] font-mono text-accent bg-accent/10 border border-accent/30 px-2 py-1 rounded-md">+ Moderation Dashboard</span>
+                <!-- PRESERVED LOGOS & ADVANCED 3D TILT CARDS -->
+                
+                <!-- 1. puSocial -->
+                <a href="dashboard.html" class="spotlight-card tilt-card p-8 flex flex-col h-full reveal group cursor-pointer block text-left">
+                    <div class="flex items-start justify-between mb-8">
+                        <img src="./Dashbaord/Dashbaord Logo.png" alt="Dashboard Logo" class="w-16 h-16 rounded-2xl shadow-[0_10px_20px_rgba(0,0,0,0.6)] object-cover border border-white/10 group-hover:scale-110 transition-transform duration-500 relative z-10" onerror="this.style.display='none'">
+                        <span class="text-[10px] font-mono font-bold text-accent tracking-widest uppercase bg-accent/10 px-2.5 py-1 rounded-md border border-accent/20 relative z-10">Admin Panel</span>
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-accent transition-colors">puSocial Dashboard</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A central control dashboard for the puSocial social media app. Manage the entire platform securely: monitor messages, handle reports, block/ban users, and broadcast global announcements to the main app.</p>
+                    <h3 class="font-display font-bold text-2xl text-white mb-3 group-hover:text-accent transition-colors relative z-10">puSocial Dashboard</h3>
+                    <p class="text-base text-muted mb-8 flex-grow leading-relaxed relative z-10">Central control dashboard for the puSocial app. Manage the platform securely: monitor messages, handle reports, and broadcast announcements.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">User Management</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-purple-400 border border-purple-400/30">Live Moderation</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Secure Login</span>
+                        <span class="text-xs font-semibold bg-[#000] px-3 py-1.5 rounded-full text-white/80 border border-white/10">User Control</span>
+                        <span class="text-xs font-semibold bg-[#000] px-3 py-1.5 rounded-full text-white/80 border border-white/10">Moderation</span>
                     </div>
                 </a>
 
-                <a href="konga.html" class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden block text-left" style="transition-delay: 100ms;">
-                    <div class="absolute inset-0 bg-gradient-to-br from-amber/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="flex items-start justify-between mb-6 relative z-10">
-                        <img src="./Konga Online Marketplace/konga logo.png" alt="Konga Logo" class="w-14 h-14 rounded-2xl shadow-lg object-cover border border-white/10" onerror="this.style.display='none'">
-                        <span class="text-[10px] font-mono text-amber bg-amber/10 border border-amber/30 px-2 py-1 rounded-md">1M+ Downloads</span>
+                <!-- 2. Konga -->
+                <a href="konga.html" class="spotlight-card tilt-card p-8 flex flex-col h-full reveal delay-1 group cursor-pointer block text-left">
+                    <div class="flex items-start justify-between mb-8">
+                        <img src="./Konga Online Marketplace/konga logo.png" alt="Konga Logo" class="w-16 h-16 rounded-2xl shadow-[0_10px_20px_rgba(0,0,0,0.6)] object-cover border border-white/10 group-hover:scale-110 transition-transform duration-500 relative z-10" onerror="this.style.display='none'">
+                        <span class="text-[10px] font-mono font-bold text-amber tracking-widest uppercase bg-amber/10 px-2.5 py-1 rounded-md border border-amber/20 relative z-10">1M+ Downloads</span>
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-amber transition-colors">Konga Online Marketplace</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">A major e-commerce platform serving millions of users on the move. I helped build this highly scalable mobile application, which currently sits at over 1 million downloads on the Google Play Store, optimizing the end-to-end retail experience.</p>
+                    <h3 class="font-display font-bold text-2xl text-white mb-3 group-hover:text-amber transition-colors relative z-10">Konga Marketplace</h3>
+                    <p class="text-base text-muted mb-8 flex-grow leading-relaxed relative z-10">Major e-commerce platform serving millions. Highly scalable mobile application optimizing the end-to-end retail experience.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Android & iOS</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-green-400 border border-green-400/30">Secure Checkout</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-muted border border-white/20">Advanced Filters</span>
+                        <span class="text-xs font-semibold bg-[#000] px-3 py-1.5 rounded-full text-white/80 border border-white/10">E-Commerce</span>
+                        <span class="text-xs font-semibold bg-[#000] px-3 py-1.5 rounded-full text-white/80 border border-white/10">High Scale</span>
                     </div>
                 </a>
 
-                <a href="meetup.html" class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden block text-left" style="transition-delay: 200ms;">
-                    <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="flex items-start justify-between mb-6 relative z-10">
-                        <img src="./Meetup/meetup.png" alt="Meetup Logo" class="w-14 h-14 rounded-2xl shadow-lg object-cover border border-white/10" onerror="this.style.display='none'">
-                        <span class="text-[10px] font-mono text-purple-400 bg-purple-500/10 border border-purple-400/30 px-2 py-1 rounded-md">60M+ Members</span>
+                <!-- 3. Meetup -->
+                <a href="meetup.html" class="spotlight-card tilt-card p-8 flex flex-col h-full reveal delay-2 group cursor-pointer block text-left">
+                    <div class="flex items-start justify-between mb-8">
+                        <img src="./Meetup/meetup.png" alt="Meetup Logo" class="w-16 h-16 rounded-2xl shadow-[0_10px_20px_rgba(0,0,0,0.6)] object-cover border border-white/10 group-hover:scale-110 transition-transform duration-500 relative z-10" onerror="this.style.display='none'">
+                        <span class="text-[10px] font-mono font-bold text-rose-400 tracking-widest uppercase bg-rose-500/10 px-2.5 py-1 rounded-md border border-rose-500/20 relative z-10">60M+ Members</span>
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-purple-400 transition-colors">Meetup: Social Events</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">I helped develop and launch this platform with the Meetup team. Discover local and online events, build a career network, and join a community of over 60 million members pursuing shared interests worldwide.</p>
+                    <h3 class="font-display font-bold text-2xl text-white mb-3 group-hover:text-rose-400 transition-colors relative z-10">Meetup</h3>
+                    <p class="text-base text-muted mb-8 flex-grow leading-relaxed relative z-10">Global platform to discover local events, build a professional network, and join a massive community of members worldwide.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Event Hosting</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-neonGreen border border-neonGreen/30">Networking</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Community</span>
+                        <span class="text-xs font-semibold bg-[#000] px-3 py-1.5 rounded-full text-white/80 border border-white/10">Social Network</span>
+                        <span class="text-xs font-semibold bg-[#000] px-3 py-1.5 rounded-full text-white/80 border border-white/10">Geo-Location</span>
                     </div>
                 </a>
 
-                <a href="fossify.html" class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden block text-left" style="transition-delay: 0ms;">
-                    <div class="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="flex items-start justify-between mb-6 relative z-10">
-                        <img src="./Fossify messages/logo.png" alt="Fossify Logo" class="w-14 h-14 rounded-2xl shadow-lg object-cover border border-white/10" onerror="this.style.display='none'">
-                        <span class="text-[10px] font-mono text-blue-400 bg-blue-400/10 border border-blue-400/30 px-2 py-1 rounded-md">100K+ Downloads</span>
+                <!-- 4. Fossify -->
+                <a href="fossify.html" class="spotlight-card tilt-card p-8 flex flex-col h-full reveal group cursor-pointer block text-left">
+                    <div class="flex items-start justify-between mb-8">
+                        <img src="./Fossify messages/logo.png" alt="Fossify Logo" class="w-16 h-16 rounded-2xl shadow-[0_10px_20px_rgba(0,0,0,0.6)] object-cover border border-white/10 group-hover:scale-110 transition-transform duration-500 relative z-10" onerror="this.style.display='none'">
+                        <span class="text-[10px] font-mono font-bold text-blue-400 tracking-widest uppercase bg-blue-400/10 px-2.5 py-1 rounded-md border border-blue-400/20 relative z-10">100K+ Downloads</span>
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-blue-400 transition-colors">Fossify - Messaging app</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">I helped the Fossify team develop and deploy this secure, open-source messaging application. It offers a smooth, ad-free experience, giving users complete control over their communication.</p>
+                    <h3 class="font-display font-bold text-2xl text-white mb-3 group-hover:text-blue-400 transition-colors relative z-10">Fossify Messages</h3>
+                    <p class="text-base text-muted mb-8 flex-grow leading-relaxed relative z-10">Secure, open-source messaging application offering a smooth, ad-free experience, giving users complete privacy control.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Open Source</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-purple-400 border border-purple-400/30">Ad-Free</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Messaging</span>
+                        <span class="text-xs font-semibold bg-[#000] px-3 py-1.5 rounded-full text-white/80 border border-white/10">Open Source</span>
+                        <span class="text-xs font-semibold bg-[#000] px-3 py-1.5 rounded-full text-white/80 border border-white/10">Encryption</span>
                     </div>
                 </a>
 
-                <a href="kimshealth.html" class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden block text-left" style="transition-delay: 100ms;">
-                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="flex items-start justify-between mb-6 relative z-10">
-                        <img src="./KIMSHEALTH GCC/kimshealth-gcc-logo.png" alt="KIMSHEALTH Logo" class="w-14 h-14 rounded-2xl shadow-lg object-cover border border-white/10" onerror="this.style.display='none'">
-                        <span class="text-[10px] font-mono text-cyan-400 bg-cyan-400/10 border border-cyan-400/30 px-2 py-1 rounded-md">10K+ Downloads</span>
+                <!-- 5. KIMSHEALTH -->
+                <a href="kimshealth.html" class="spotlight-card tilt-card p-8 flex flex-col h-full reveal delay-1 group cursor-pointer block text-left">
+                    <div class="flex items-start justify-between mb-8">
+                        <img src="./KIMSHEALTH GCC/kimshealth-gcc-logo.png" alt="KIMSHEALTH Logo" class="w-16 h-16 rounded-2xl shadow-[0_10px_20px_rgba(0,0,0,0.6)] object-cover border border-white/10 group-hover:scale-110 transition-transform duration-500 relative z-10" onerror="this.style.display='none'">
+                        <span class="text-[10px] font-mono font-bold text-cyan-400 tracking-widest uppercase bg-cyan-400/10 px-2.5 py-1 rounded-md border border-cyan-400/20 relative z-10">Healthcare</span>
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-cyan-400 transition-colors">KIMSHEALTH GCC - Booking app</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">I helped the KIMSHEALTH GCC team develop and maintain this medical booking app using Flutter. I also helped them successfully publish KIMSHEALTH GCC on both the Google Play Store and Apple App Store.</p>
+                    <h3 class="font-display font-bold text-2xl text-white mb-3 group-hover:text-cyan-400 transition-colors relative z-10">KIMSHEALTH GCC</h3>
+                    <p class="text-base text-muted mb-8 flex-grow leading-relaxed relative z-10">Enterprise medical booking app. Securely handles patient data and appointment scheduling across platforms.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Flutter App</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-teal-400 border border-teal-400/30">Healthcare</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Booking</span>
+                        <span class="text-xs font-semibold bg-[#000] px-3 py-1.5 rounded-full text-white/80 border border-white/10">Flutter</span>
+                        <span class="text-xs font-semibold bg-[#000] px-3 py-1.5 rounded-full text-white/80 border border-white/10">Enterprise</span>
                     </div>
                 </a>
 
-                <a href="eazzy.html" class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden block text-left" style="transition-delay: 200ms;">
-                    <div class="absolute inset-0 bg-gradient-to-br from-rose-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="flex items-start justify-between mb-6 relative z-10">
-                        <img src="./Eazzy Food/eazzy-food-logo.png" alt="Eazzy Food Logo" class="w-14 h-14 rounded-2xl shadow-lg object-cover border border-white/10" onerror="this.style.display='none'">
-                        <span class="text-[10px] font-mono text-rose-400 bg-rose-500/10 border border-rose-400/30 px-2 py-1 rounded-md">10K+ Downloads</span>
+                <!-- 6. Eazzy Food -->
+                <a href="eazzy.html" class="spotlight-card tilt-card p-8 flex flex-col h-full reveal delay-2 group cursor-pointer block text-left">
+                    <div class="flex items-start justify-between mb-8">
+                        <img src="./Eazzy Food/eazzy-food-logo.png" alt="Eazzy Food Logo" class="w-16 h-16 rounded-2xl shadow-[0_10px_20px_rgba(0,0,0,0.6)] object-cover border border-white/10 group-hover:scale-110 transition-transform duration-500 relative z-10" onerror="this.style.display='none'">
+                        <span class="text-[10px] font-mono font-bold text-orange-400 tracking-widest uppercase bg-orange-500/10 px-2.5 py-1 rounded-md border border-orange-500/20 relative z-10">Logistics</span>
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-rose-400 transition-colors">Eazzy Food Delivery</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">I developed and deployed this seamless food delivery platform on both the App Store and Google Play. Featuring real-time order tracking, a diverse culinary menu, and flexible delivery options to ensure a delightful dining experience.</p>
+                    <h3 class="font-display font-bold text-2xl text-white mb-3 group-hover:text-orange-400 transition-colors relative z-10">Eazzy Food</h3>
+                    <p class="text-base text-muted mb-8 flex-grow leading-relaxed relative z-10">Seamless food delivery platform featuring real-time order tracking, routing algorithms, and flexible integrations.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Food Delivery</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-rose-400 border border-rose-400/30">Live Tracking</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Cross-Platform</span>
+                        <span class="text-xs font-semibold bg-[#000] px-3 py-1.5 rounded-full text-white/80 border border-white/10">Live Tracking</span>
+                        <span class="text-xs font-semibold bg-[#000] px-3 py-1.5 rounded-full text-white/80 border border-white/10">Maps API</span>
                     </div>
                 </a>
 
-                <a href="calistx.html" class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden block text-left" style="transition-delay: 0ms;">
-                    <div class="absolute inset-0 bg-gradient-to-br from-neonGreen/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="flex items-start justify-between mb-6 relative z-10">
-                        <img src="./CalistX/CalistX-logo.png" alt="CalistX Logo" class="w-14 h-14 rounded-2xl shadow-lg object-cover border border-white/10" onerror="this.style.display='none'">
-                        <span class="text-[10px] font-mono text-neonGreen bg-neonGreen/10 border border-neonGreen/30 px-2 py-1 rounded-md">Trusted on iOS & Android</span>
+                <!-- 7. CalistX -->
+                <a href="calistx.html" class="spotlight-card tilt-card p-8 flex flex-col h-full reveal group cursor-pointer block text-left">
+                    <div class="flex items-start justify-between mb-8">
+                        <img src="./CalistX/CalistX-logo.png" alt="CalistX Logo" class="w-16 h-16 rounded-2xl shadow-[0_10px_20px_rgba(0,0,0,0.6)] object-cover border border-white/10 group-hover:scale-110 transition-transform duration-500 relative z-10" onerror="this.style.display='none'">
+                        <span class="text-[10px] font-mono font-bold text-neonGreen tracking-widest uppercase bg-neonGreen/10 px-2.5 py-1 rounded-md border border-neonGreen/20 relative z-10">Fitness App</span>
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-neonGreen transition-colors">CalistX - Fitness App</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">I helped the SS Media team develop and deploy this calisthenics application. Built for structured bodyweight training, it offers real trainer-led video guidance, offline downloads, and customized goal-based playlists.</p>
+                    <h3 class="font-display font-bold text-2xl text-white mb-3 group-hover:text-neonGreen transition-colors relative z-10">CalistX</h3>
+                    <p class="text-base text-muted mb-8 flex-grow leading-relaxed relative z-10">Structured bodyweight training platform. Features real trainer-led video streaming, offline downloads, and custom playlists.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Health & Fitness</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-neonGreen border border-neonGreen/30">Video Streaming</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Offline Support</span>
+                        <span class="text-xs font-semibold bg-[#000] px-3 py-1.5 rounded-full text-white/80 border border-white/10">Video Stream</span>
+                        <span class="text-xs font-semibold bg-[#000] px-3 py-1.5 rounded-full text-white/80 border border-white/10">Offline Sync</span>
                     </div>
                 </a>
 
-                <a href="vento.html" class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden block text-left" style="transition-delay: 100ms;">
-                    <div class="absolute inset-0 bg-gradient-to-br from-neonGreen/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="flex items-start justify-between mb-6 relative z-10">
-                        <img src="./Vento Expense & Budget Tracker/vento-logo.png" alt="Vento Logo" class="w-14 h-14 rounded-2xl shadow-lg object-cover border border-white/10" onerror="this.style.display='none'">
-                        <span class="text-[10px] font-mono text-neonGreen bg-neonGreen/10 border border-neonGreen/30 px-2 py-1 rounded-md">1K+ Users • Offline-First</span>
+                <!-- 8. Vento -->
+                <a href="vento.html" class="spotlight-card tilt-card p-8 flex flex-col h-full reveal delay-1 group cursor-pointer block text-left">
+                    <div class="flex items-start justify-between mb-8">
+                        <img src="./Vento Expense & Budget Tracker/vento-logo.png" alt="Vento Logo" class="w-16 h-16 rounded-2xl shadow-[0_10px_20px_rgba(0,0,0,0.6)] object-cover border border-white/10 group-hover:scale-110 transition-transform duration-500 relative z-10" onerror="this.style.display='none'">
+                        <span class="text-[10px] font-mono font-bold text-yellow-400 tracking-widest uppercase bg-yellow-400/10 px-2.5 py-1 rounded-md border border-yellow-400/20 relative z-10">Offline-First</span>
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-neonGreen transition-colors">Vento - Expense & Budget Tracker</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">I engineered and deployed this offline-first personal finance app. Built with complete privacy in mind, it features encrypted local storage, custom budgeting tools, subscription tracking, and rich visual analytics.</p>
+                    <h3 class="font-display font-bold text-2xl text-white mb-3 group-hover:text-yellow-400 transition-colors relative z-10">Vento Tracker</h3>
+                    <p class="text-base text-muted mb-8 flex-grow leading-relaxed relative z-10">Privacy-focused personal finance app. Features encrypted local storage, budgeting tools, and rich visual data analytics.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">Expense Tracker</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-neonGreen border border-neonGreen/30">Offline-First</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Budgeting</span>
+                        <span class="text-xs font-semibold bg-[#000] px-3 py-1.5 rounded-full text-white/80 border border-white/10">Local DB</span>
+                        <span class="text-xs font-semibold bg-[#000] px-3 py-1.5 rounded-full text-white/80 border border-white/10">Data Vis</span>
                     </div>
                 </a>
 
-                <a href="s-learning.html" class="glass-card rounded-2xl p-6 flex flex-col h-full reveal group cursor-pointer relative overflow-hidden block text-left" style="transition-delay: 200ms;">
-                    <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div class="flex items-start justify-between mb-6 relative z-10">
-                        <img src="./S learning - Study with AI/s-learning-logo.png" alt="S Learning Logo" class="w-14 h-14 rounded-2xl shadow-lg object-cover border border-white/10" onerror="this.style.display='none'">
-                        <span class="text-[10px] font-mono text-indigo-400 bg-indigo-500/10 border border-indigo-400/30 px-2 py-1 rounded-md">5K+ Downloads • AI</span>
+                <!-- 9. S Learning -->
+                <a href="s-learning.html" class="spotlight-card tilt-card p-8 flex flex-col h-full reveal delay-2 group cursor-pointer block text-left">
+                    <div class="flex items-start justify-between mb-8">
+                        <img src="./S learning - Study with AI/s-learning-logo.png" alt="S Learning Logo" class="w-16 h-16 rounded-2xl shadow-[0_10px_20px_rgba(0,0,0,0.6)] object-cover border border-white/10 group-hover:scale-110 transition-transform duration-500 relative z-10" onerror="this.style.display='none'">
+                        <span class="text-[10px] font-mono font-bold text-indigo-400 tracking-widest uppercase bg-indigo-500/10 px-2.5 py-1 rounded-md border border-indigo-500/20 relative z-10">AI Integration</span>
                     </div>
-                    <h3 class="font-display font-bold text-2xl text-white mb-2 relative z-10 group-hover:text-indigo-400 transition-colors">S Learning - Learning App</h3>
-                    <p class="text-sm text-muted mb-6 flex-grow relative z-10 leading-relaxed">I developed and maintain this intelligent AI-powered educational companion. It streamlines academic workflows with automated lesson planning, notes generation, and a collaborative community forum.</p>
+                    <h3 class="font-display font-bold text-2xl text-white mb-3 group-hover:text-indigo-400 transition-colors relative z-10">S Learning</h3>
+                    <p class="text-base text-muted mb-8 flex-grow leading-relaxed relative z-10">Intelligent AI-powered educational platform. Streamlines workflows with automated lesson planning and notes generation.</p>
                     <div class="flex flex-wrap gap-2 mt-auto relative z-10">
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-accent border border-accent/30">EdTech</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-indigo-400 border border-indigo-400/30">AI Powered</span>
-                        <span class="text-xs font-mono bg-navy/80 px-2.5 py-1 rounded-md text-amber border border-amber/30">Cross-Platform</span>
+                        <span class="text-xs font-semibold bg-[#000] px-3 py-1.5 rounded-full text-white/80 border border-white/10">OpenAI API</span>
+                        <span class="text-xs font-semibold bg-[#000] px-3 py-1.5 rounded-full text-white/80 border border-white/10">EdTech</span>
                     </div>
                 </a>
 
@@ -625,88 +599,109 @@
         </div>
     </section>
 
-    <section id="contact" class="min-h-[calc(100vh-100px)] flex flex-col py-12 px-6 relative z-10 border-t border-white/5 bg-gradient-to-t from-black to-transparent">
-        <div class="max-w-4xl w-full mx-auto text-center reveal glass-card p-12 rounded-3xl relative overflow-hidden border border-accent/20 my-auto">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-[50px] -translate-y-1/2 translate-x-1/3"></div>
+    <!-- Final Client CTA Section -->
+    <section id="contact" class="py-32 px-6 relative z-10 border-t border-white/5 bg-gradient-to-t from-black to-[#050505]">
+        <div class="max-w-4xl w-full mx-auto text-center reveal spotlight-card p-16 md:p-20 rounded-[3rem] relative overflow-hidden">
             
-            <h2 class="font-display text-3xl md:text-4xl font-bold mb-6 text-white relative z-10">Got a Project in Mind?</h2>
-            <p class="text-muted mb-10 text-lg relative z-10">Whether you need a brand new app with its own dashboard, help fixing something that's already live, or a control panel added to an app you already have, I'd love to help. Send a message and let's talk about what you need.</p>
+            <h2 class="font-display text-5xl md:text-6xl font-extrabold mb-8 text-white tracking-tight relative z-10">Start your project.</h2>
+            <p class="text-muted mb-12 text-xl relative z-10 max-w-2xl mx-auto font-light">
+                Whether you need a greenfield application built from scratch or a powerful dashboard added to your existing platform, drop me an email to discuss your architecture.
+            </p>
             
-            <div class="flex flex-wrap justify-center gap-4 md:gap-6 relative z-10">
-                <a href="mailto:iktiarnazib@gmail.com" class="px-6 py-3 rounded-xl bg-accent text-navy font-bold hover:bg-white transition-all shadow-[0_0_20px_rgba(76,141,255,0.3)]">
-                    Email Me
+            <a href="mailto:iktiarnazib@gmail.com" class="inline-block relative z-10 mb-16">
+                <span class="font-display text-3xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-muted hover:from-accent hover:to-purple-500 transition-all duration-500 pb-2 border-b border-white/20 hover:border-accent">
+                    iktiarnazib@gmail.com
+                </span>
+            </a>
+            
+            <div class="flex flex-wrap justify-center gap-4 relative z-10">
+                <a href="https://www.upwork.com/freelancers/~01d1e6e01650df66dd" target="_blank" class="magnetic-btn px-8 py-4 rounded-full text-sm bg-[#14A800] text-white font-bold flex items-center gap-2">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-7.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V4.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.165.749 2.508 1.203 4.086 1.203 3 0 5.439-2.452 5.439-5.45.001-3.001-2.438-5.484-5.439-5.484z"/></svg>
+                    Hire on Upwork
                 </a>
-                <a href="https://github.com/iktiarnazib" target="_blank" class="px-6 py-3 rounded-xl bg-surface/50 border border-white/10 font-bold text-white hover:border-accent hover:text-accent transition-all">
-                    GitHub
+                <a href="https://www.fiverr.com/s/pdD54PG" target="_blank" class="magnetic-btn px-8 py-4 rounded-full text-sm bg-[#1DBF73] text-white font-bold flex items-center gap-2">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M23.004 12.442c-.163.063-.63.198-1.212.198-1.362 0-2.15-.798-2.15-2.176v-.038h2.71v-1.16h-2.71v-.874c0-1.014.462-1.51 1.363-1.51.55 0 1.062.135 1.062.135l.276-1.235s-.517-.194-1.494-.194c-1.71 0-2.71.98-2.71 2.71v.968h-1.246v1.16h1.246v5.756h2.203v-5.756h2.212l.55-1.16v.176zm-14.13-.036c-.512 0-.874-.362-.874-.874s.362-.875.874-.875.875.363.875-.875-.363.874-.875.874zm1.101 5.966H7.867v-6.916h2.108v6.916zm-6.5-6.916l1.612 4.484 1.61-4.484h2.212l-2.717 6.916H6.076l-2.71-6.916h2.109zm18.11-.106a2.02 2.02 0 0 0-1.76 1.023v-.917h-1.986v6.916h2.108v-3.71c0-.917.55-1.51 1.4-1.51.25 0 .462.036.462.036v-1.802s-.106-.036-.224-.036z"/></svg>
+                    Hire on Fiverr
                 </a>
-                <a href="https://www.linkedin.com/in/iktiarnazib/" target="_blank" class="px-6 py-3 rounded-xl bg-surface/50 border border-white/10 font-bold text-white hover:border-accent hover:text-accent transition-all">
-                    LinkedIn
-                </a>
+            </div>
+            
+            <div class="flex justify-center gap-8 mt-12 relative z-10">
+                <a href="https://github.com/iktiarnazib" target="_blank" class="text-xs font-bold text-muted hover:text-white transition-colors uppercase tracking-[0.2em]">GitHub</a>
+                <a href="https://www.linkedin.com/in/iktiarnazib/" target="_blank" class="text-xs font-bold text-muted hover:text-white transition-colors uppercase tracking-[0.2em]">LinkedIn</a>
             </div>
         </div>
         
-        <div class="mt-8 text-center flex flex-col items-center gap-4">
-            <div class="flex items-center gap-4 text-xs font-bold text-white/50 tracking-widest">
-                <a href="https://www.fiverr.com/s/pdD54PG" target="_blank" class="hover:text-fiverr transition-colors">FIVERR</a>
-                <span>|</span>
-                <a href="https://www.upwork.com/freelancers/~01d1e6e01650df66dd" target="_blank" class="hover:text-upwork transition-colors">UPWORK</a>
-            </div>
-            <div class="text-sm text-muted/40 font-mono">
-                &copy; 2026 Iktiar
+        <div class="mt-20 text-center">
+            <div class="text-[10px] text-muted/30 font-mono tracking-widest uppercase">
+                &copy; 2026 Iktiar System Architecture. All Rights Reserved.
             </div>
         </div>
     </section>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const reveals = document.querySelectorAll('.reveal');
-            
-            const revealOnScroll = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
+            // 1. Mouse Tracking Spotlight Effect
+            document.querySelectorAll('.spotlight-card').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
                 });
-            }, {
-                threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px"
             });
 
-            reveals.forEach(reveal => {
-                revealOnScroll.observe(reveal);
-            });
+            // 2. 3D Magnetic Tilt Effect for Project Cards
+            if (window.matchMedia("(pointer: fine)").matches) {
+                document.querySelectorAll('.tilt-card').forEach(card => {
+                    card.addEventListener('mousemove', (e) => {
+                        const rect = card.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        const centerX = rect.width / 2;
+                        const centerY = rect.height / 2;
+                        
+                        // Subtle 5 degree max rotation
+                        const rotateX = ((y - centerY) / centerY) * -5;
+                        const rotateY = ((x - centerX) / centerX) * 5;
+                        
+                        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                    });
 
-            const activeUsersEl = document.getElementById('activeUsersCount');
-            const pushStatusEl = document.getElementById('pushStatusText');
-            const analyticsLine = document.getElementById('analyticsLine');
-
-            if (activeUsersEl) {
-                let count = 12840;
-                setInterval(() => {
-                    count += Math.floor(Math.random() * 14) - 4;
-                    activeUsersEl.textContent = count.toLocaleString();
-                }, 2000);
+                    card.addEventListener('mouseleave', () => {
+                        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                    });
+                });
             }
 
+            // 3. Cinematic Reveal Observer
+            const observerOptions = { root: null, rootMargin: "0px", threshold: 0.15 };
+            const revealOnScroll = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(reveal => revealOnScroll.observe(reveal));
+
+            // 4. Dashboard Data Simulation
+            const activeUsersEl = document.getElementById('activeUsersCount');
+            if (activeUsersEl) {
+                let count = 1024;
+                setInterval(() => {
+                    count += Math.floor(Math.random() * 5) - 1;
+                    activeUsersEl.textContent = count.toLocaleString();
+                }, 2500);
+            }
+
+            const pushStatusEl = document.getElementById('pushStatusText');
             if (pushStatusEl) {
-                const states = ['Sent ✓', 'Sending…', 'Scheduled'];
+                const states = ['Healthy', 'Syncing...', 'Optimized'];
                 let i = 0;
                 setInterval(() => {
                     i = (i + 1) % states.length;
                     pushStatusEl.textContent = states[i];
-                }, 2600);
-            }
-
-            if (analyticsLine) {
-                const basePoints = [26,158, 50,140, 74,150, 98,132, 122,145, 146,120, 170,138, 194,128, 218,142, 242,124];
-                setInterval(() => {
-                    const jittered = basePoints.map((v, idx) => idx % 2 === 1 ? v + (Math.random() * 6 - 3) : v);
-                    const pointsStr = [];
-                    for (let j = 0; j < jittered.length; j += 2) {
-                        pointsStr.push(jittered[j] + ',' + jittered[j + 1].toFixed(1));
-                    }
-                    analyticsLine.setAttribute('points', pointsStr.join(' '));
-                }, 1800);
+                }, 4000);
             }
         });
     </script>
