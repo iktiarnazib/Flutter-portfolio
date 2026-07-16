@@ -38,7 +38,6 @@
                             '50%': { transform: 'translateY(-15px)' },
                         },
                         mesh: {
-                            /* Added translate3d to force hardware acceleration and eliminate lag */
                             '0%': { transform: 'translate3d(0,0,0) scale(1) rotate(0deg)', opacity: 0.15 },
                             '100%': { transform: 'translate3d(0,0,0) scale(1.3) rotate(20deg)', opacity: 0.4 },
                         }
@@ -56,12 +55,14 @@
             padding-bottom: 5rem;
         }
 
-        /* Cinematic Film Grain */
+        /* Cinematic Film Grain (Hardware Accelerated) */
         body::after {
             content: "";
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
             opacity: 0.05; pointer-events: none; z-index: 9999;
+            transform: translateZ(0);
+            will-change: transform;
         }
 
         /* Premium Scrollbar */
@@ -80,12 +81,12 @@
             mask-image: radial-gradient(ellipse at top, black 0%, transparent 80%);
             -webkit-mask-image: radial-gradient(ellipse at top, black 0%, transparent 80%);
             pointer-events: none;
+            transform: translateZ(0);
         }
 
-        /* Dynamic Mesh Backgrounds */
+        /* Dynamic Mesh Backgrounds (Optimized: No heavy blur filter) */
         .mesh-blob {
-            position: absolute; border-radius: 50%; filter: blur(120px); z-index: -1; pointer-events: none;
-            /* Performance fixes below */
+            position: absolute; border-radius: 50%; z-index: -1; pointer-events: none;
             will-change: transform;
             transform: translateZ(0); 
         }
@@ -102,34 +103,36 @@
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
             overflow: hidden;
             
-            /* BUG FIX: Removed transform-style: preserve-3d; which breaks backdrop-filter blurs in Chromium/Webkit */
+            /* Fixes blur turning off during scroll/hover */
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            will-change: transform;
+            transform: translateZ(0);
         }
 
+        /* Spotlight radius reduced to 500px for massive performance gain */
         .spotlight-card::before {
             content: "";
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.06), transparent 40%);
+            background: radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.06), transparent 40%);
             z-index: 0;
             pointer-events: none;
             opacity: 0;
             transition: opacity 0.5s ease;
+            will-change: background;
         }
 
         .spotlight-card:hover {
             border-color: rgba(255, 255, 255, 0.15);
             transform: translateY(-4px);
             box-shadow: 0 30px 60px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.1);
+            will-change: transform, border-color, box-shadow;
         }
 
         .spotlight-card:hover::before {
             opacity: 1;
         }
 
-        /* Keep content above the spotlight */
         .spotlight-card > * {
             position: relative;
             z-index: 1;
@@ -142,18 +145,17 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Reveal Animation (Optimized to fix frame drops) */
+        /* Reveal Animation (Optimized: Removed filter transition to fix glassmorphism glitching) */
         .reveal {
             opacity: 0;
             transform: translateY(40px) scale(0.96) translateZ(0);
-            filter: blur(12px);
             transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-                        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-                        filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform, filter;
+                        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
         }
         .reveal.active {
-            opacity: 1; transform: translateY(0) scale(1) translateZ(0); filter: blur(0);
+            opacity: 1; 
+            transform: translateY(0) scale(1) translateZ(0); 
         }
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
@@ -177,7 +179,6 @@
             box-shadow: 0 0 40px rgba(255,255,255,0.15);
         }
 
-        /* Animated SVG elements performance class */
         .animate-float, .animate-float-delayed {
             will-change: transform;
         }
@@ -186,8 +187,9 @@
 <body class="antialiased selection:bg-accent/30 selection:text-white relative">
 
     <div class="bg-grid"></div>
-    <div class="mesh-blob w-[900px] h-[900px] bg-[#2997ff]/10 top-[-20%] left-[-10%] animate-mesh"></div>
-    <div class="mesh-blob w-[800px] h-[800px] bg-[#8B5CF6]/10 bottom-[10%] right-[-10%] animate-mesh" style="animation-direction: reverse;"></div>
+    
+    <div class="mesh-blob w-[900px] h-[900px] top-[-20%] left-[-10%] animate-mesh" style="background: radial-gradient(circle at center, rgba(41,151,255,0.15) 0%, transparent 60%);"></div>
+    <div class="mesh-blob w-[800px] h-[800px] bottom-[10%] right-[-10%] animate-mesh" style="animation-direction: reverse; background: radial-gradient(circle at center, rgba(139,92,246,0.15) 0%, transparent 60%);"></div>
 
     <div class="fixed top-6 w-full z-50 flex justify-center px-4 pointer-events-none">
         <nav class="pointer-events-auto bg-black/40 backdrop-blur-xl border border-white/10 rounded-full px-4 py-2 sm:px-6 sm:py-3 flex justify-between items-center gap-2 sm:gap-8 w-full max-w-6xl shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
